@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shift Malam — Artikel</title>
+
+  <link rel="stylesheet" href="css/artikel.css">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&family=DM+Sans&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── TIMELINE ── */
+    .timeline-section {
+      margin-top: 2.5rem;
+    }
+    .timeline-section h3 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 1.25rem;
+    }
+    .timeline-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: relative;
+    }
+    .timeline-list::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: currentColor;
+      opacity: 0.15;
+    }
+    .timeline-list li {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 0 0 1.25rem 2rem;
+      position: relative;
+    }
+    .timeline-list li::before {
+      content: '';
+      position: absolute;
+      left: 2px;
+      top: 7px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.6;
+    }
+    .tl-date {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      opacity: 0.5;
+      min-width: 110px;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+    .tl-event {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* ── VERDICT ── */
+    .verdict-section {
+      margin-top: 2.5rem;
+    }
+    .verdict-section h3 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 1rem;
+    }
+    .verdict-box {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+    }
+    .verdict-icon {
+      font-size: 2rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .verdict-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .verdict-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.45;
+    }
+    .verdict-content {
+      font-size: 1rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    /* ── MYSTERY METER ── */
+    .mystery-section {
+      margin-top: 1.75rem;
+    }
+    .mystery-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .mystery-bar-bg {
+      height: 4px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .mystery-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.85));
+      border-radius: 4px;
+      transition: width 1s ease;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- HERO -->
+<section class="article-hero">
+  <div class="article-hero-bg" id="articleHeroBg" style="background-image:url('https://source.unsplash.com/1600x900/?dark,mystery');"></div>
+  <div class="article-hero-overlay"></div>
+
+  <div class="article-hero-content">
+    <a href="index.html" class="back-btn">← Kembali</a>
+
+    <div class="article-meta-top">
+      <span class="article-badge-hero" id="heroBadge">INSIDEN</span>
+      <span class="article-read-time" id="heroReadTime">5 menit baca</span>
+    </div>
+
+    <h1 class="article-hero-title" id="articleTitle">
+      Insiden Misterius di Tengah Malam
+    </h1>
+
+    <p class="article-hero-sub" id="articleSub">
+      Sebuah kejadian aneh yang terjadi tanpa saksi, tanpa jejak jelas, dan menyisakan lebih banyak pertanyaan daripada jawaban.
+    </p>
+
+    <div class="article-meta-bottom">
+      <span class="meta-item" id="heroDate">1 April 2026</span>
+      <button id="bookmarkBtn" class="bookmark-btn">🔖 Bookmark</button>
+    </div>
+  </div>
+</section>
+
+<!-- LAYOUT -->
+<div class="article-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="toc-sidebar">
+    <div class="toc-inner">
+      <p class="toc-label">Isi Artikel</p>
+      <ul class="toc-list" id="tocList">
+        <!-- TOC dibangun JS -->
+      </ul>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <article class="article-content">
+    <div class="facts-box">
+      <div class="facts-header">
+        <span class="facts-icon">📌</span>
+        <span class="facts-title">FAKTA CEPAT</span>
+      </div>
+      <ul class="facts-list" id="factsList">
+        <!-- Facts dibangun JS -->
+      </ul>
+    </div>
+
+    <div id="articleContent">
+      <!-- Konten artikel diinject JS -->
+    </div>
+
+    <!-- TIMELINE -->
+    <div id="timelineSection"></div>
+
+    <!-- VERDICT -->
+    <div id="verdictSection"></div>
+
+    <div class="tags" id="articleTags">
+      <!-- Tags diinject JS -->
+    </div>
+  </article>
+
+</div>
+
+<!-- CASE NAVIGATION -->
+<div class="case-nav">
+  <a href="#" class="case-nav-btn prev-btn" id="prevBtn">
+    <div class="nav-arrow">←</div>
+    <div class="nav-info">
+      <span class="nav-hint">Sebelumnya</span>
+      <span class="nav-title" id="prevTitle">Kasus Sebelumnya</span>
+    </div>
+  </a>
+
+  <a href="index.html" class="case-nav-center">
+    <span>☾</span>
+    <span>Kembali ke Arsip</span>
+  </a>
+
+  <a href="#" class="case-nav-btn next-btn" id="nextBtn">
+    <div class="nav-info">
+      <span class="nav-hint">Selanjutnya</span>
+      <span class="nav-title" id="nextTitle">Kasus Berikutnya</span>
+    </div>
+    <div class="nav-arrow">→</div>
+  </a>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+/* ============================
+   SHIFT MALAM — JS FULL
+   ============================ */
+
+// DATABASE
+ const CASES = [
+{
+  "id": 0,
+  "title": "Insiden Dyatlov Pass",
+  "subtitle": "Misteri Terbesar di Puncak Kholat Syakhl",
+  "category": "insiden",
+  "categoryLabel": "INSIDEN",
+  "date": "Februari 1959",
+  "readTime": 15,
+  "status": "Terpecahkan sebagian (Teori Avalanche)",
+  "heroBg": "asset/dyatlov.png",
+  "illustration": "asset/dyatlov.png",
+  "facts": [
+    "Tenda robek dari dalam menggunakan pisau secara terburu-buru",
+    "Jejak kaki kaos kaki dan telanjang kaki di salju suhu -30°C",
+    "Cedera internal parah (tulang rusuk patah) tanpa memar luar",
+    "Beberapa korban kehilangan lidah, mata, dan jaringan lunak wajah",
+    "Ditemukan kadar radioaktif tinggi pada pakaian dua korban"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Awal Perjalanan: Misi Menuju Otorten</h2> \
+    <p>Pada 23 Januari 1959, 10 pendaki berpengalaman dari Institut Politeknik Ural yang dipimpin oleh Igor Dyatlov berangkat menuju pegunungan Ural Utara. Tujuan mereka adalah Gunung Otorten. Di tengah jalan, Yuri Yudin terpaksa kembali karena sakit, menyisakan 9 orang untuk melanjutkan perjalanan. Di awal Februari, mereka terjebak badai salju dan kehilangan arah, hingga akhirnya mendirikan tenda di lereng Kholat Syakhl, yang dalam bahasa suku Mansi berarti 'Gunung Kematian'.</p> \
+    <img src='asset/dyatlov.png' alt='Foto ceria terakhir tim Dyatlov sebelum kejadian'> \
+    <h2 id='bagian2'>Malam Kehancuran yang Tak Terjelaskan</h2> \
+    <p>Pada malam 1-2 Februari, sesuatu yang mengerikan memaksa mereka keluar dari tenda. Penyelidikan menunjukkan tenda disobek dari dalam, menandakan mereka tidak sempat membuka ritsleting karena panik luar biasa. Tanpa jaket dan sepatu, mereka berlari menuruni lereng menuju hutan di tengah badai mematikan. Tim pencari pertama kali menemukan dua jenazah di bawah pohon cedar besar dalam keadaan hanya mengenakan pakaian dalam, dengan tangan yang melepuh seolah-olah mereka mencoba memanjat pohon dengan putus asa.</p> \
+    <h2 id='bagian3'>Penemuan Terakhir dan Kejanggalan Medis</h2> \
+    <p>Tiga jenazah lainnya, termasuk Igor Dyatlov, ditemukan di antara pohon cedar dan tenda, mengisyaratkan mereka mencoba kembali ke kamp sebelum akhirnya tewas membeku. Namun, misteri terdalam ditemukan dua bulan kemudian di dasar jurang. Empat korban terakhir ditemukan dengan luka trauma yang setara dengan kecelakaan mobil berkecepatan tinggi, namun anehnya tidak ada luka luar atau memar di kulit mereka. Kasus ini ditutup secara terburu-buru oleh otoritas Soviet dengan kesimpulan 'kekuatan alam yang tidak diketahui'.</p>",
+  "timeline": [
+    {"date": "23 Jan 1959", "event": "Tim berangkat dari Sverdlovsk dengan kereta api"},
+    {"date": "28 Jan 1959", "event": "Yuri Yudin mundur karena sakit, 9 orang lanjut mendaki"},
+    {"date": "1 Feb 1959", "event": "Tim mendirikan kamp terakhir di lereng Kholat Syakhl"},
+    {"date": "12 Feb 1959", "event": "Jadwal tim seharusnya memberi kabar via telegram (tidak ada kabar)"},
+    {"date": "26 Feb 1959", "event": "Tim pencari menemukan tenda yang hancur dan 5 mayat pertama"},
+    {"date": "4 Mei 1959", "event": "4 mayat terakhir ditemukan di bawah timbunan salju setebal 4 meter"}
+  ],
+  "verdict": "Diduga dipicu oleh longsoran salju lempeng (Slab Avalanche) yang memicu kepanikan dan trauma fisik berat",
+  "verdictIcon": "🏔️",
+  "mysteryLevel": 80,
+  "tags": ["dyatlov", "misteri rusia", "gunung kematian", "teka-teki sejarah"]
+},
+
+{
+  "id": 1,
+  "title": "Kasus Elisa Lam",
+  "subtitle": "Misteri Kematian di Tangki Air Hotel Cecil",
+  "category": "tak-terpecahkan",
+  "categoryLabel": "TAK TERPECAHKAN",
+  "date": "2013",
+  "readTime": 10,
+  "status": "Ditutup (Kecelakaan Accidental)",
+  "heroBg": "asset/elisa.png",
+  "illustration": "asset/elisa.png",
+  "facts": [
+    "Rekaman CCTV lift yang menunjukkan perilaku aneh",
+    "Pintu tangki air yang berat ditemukan tertutup",
+    "Tidak ada jejak obat-obatan atau alkohol dalam otopsi",
+    "Lokasi kejadian (Hotel Cecil) memiliki sejarah kriminal kelam"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Lift yang Menolak Tertutup</h2> \
+    <p>Februari 2013, dunia digemparkan oleh video CCTV terakhir Elisa Lam di lift Hotel Cecil. Ia terlihat berbicara dengan 'seseorang' yang tidak nampak, bersembunyi di sudut lift, dan melakukan gerakan tangan yang sangat tidak wajar.</p> \
+    <img src='asset/elisa.png' alt='Foto ceria terakhir tim Dyatlov sebelum kejadian'> \
+    <h2 id='bagian2'>Penemuan yang Mengerikan</h2> \
+    <p>Setelah tamu hotel mengeluh tentang air yang berwarna hitam dan berasa aneh, petugas mengecek tangki air di atap. Di sana, tubuh Elisa ditemukan tanpa busana. Pertanyaan besarnya: bagaimana ia bisa masuk ke tangki yang terkunci dan menutup kembali pintunya yang sangat berat dari dalam?</p> \
+    <p>Meskipun kepolisian menyatakan ini adalah akibat gangguan bipolar, banyak yang percaya ada unsur supranatural atau keterlibatan pihak ketiga.</p>",
+  "timeline": [
+    {"date": "26 Jan 2013", "event": "Elisa Lam tiba di Los Angeles dan menginap di Hotel Cecil"},
+    {"date": "31 Jan 2013", "event": "Elisa dilaporkan hilang oleh keluarganya"},
+    {"date": "13 Feb 2013", "event": "Polisi merilis video CCTV lift yang viral"},
+    {"date": "19 Feb 2013", "event": "Tubuh Elisa ditemukan di dalam tangki air atap hotel"}
+  ],
+  "verdict": "Secara medis kecelakaan, secara logika masih banyak lubang",
+  "verdictIcon": "🏨",
+  "mysteryLevel": 90,
+  "tags": ["elisa-lam", "hotel-cecil", "misteri", "urban-legend"]
+},
+
+{
+  "id": 2,
+  "title": "Segitiga Bermuda",
+  "subtitle": "Anomali Navigasi di Lautan Atlantik",
+  "category": "misteri-dunia",
+  "categoryLabel": "MISTERI DUNIA",
+  "date": "1945 - Sekarang",
+  "readTime": 10,
+  "status": "Debatable",
+  "heroBg": "asset/segitiga.png",
+  "illustration": "asset/segitiga2.png",
+  "facts": [
+    "Flight 19 menghilang tanpa jejak pada 1945",
+    "Kompas sering mengalami gangguan magnetik di kawasan ini",
+    "Ratusan bangkai kapal dan pesawat tidak pernah ditemukan di dasar laut",
+    "Tinggi gelombang bisa mencapai 15 meter bahkan saat cuaca cerah",
+    "Fenomena awan heksagonal dan arus laut tak wajar diduga mempengaruhi navigasi"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Hilangnya Flight 19</h2> \
+    <p>Pada 5 Desember 1945, lima pesawat pembom Angkatan Laut AS yang tergabung dalam Flight 19 hilang saat latihan rutin di Segitiga Bermuda. Pesawat penyelamat yang dikirim untuk mencari mereka juga lenyap tanpa meninggalkan sinyal SOS. Kasus ini memicu perhatian internasional dan menjadi awal legenda Segitiga Bermuda.</p> \
+    <img src='asset/segitiga2.png' alt='Ilustrasi Flight 19 hilang di Segitiga Bermuda'> \
+    <h2 id='bagian2'>Fenomena dan Penjelasan</h2> \
+    <img src='asset/segitiga3.png' alt='segitiga'> \
+    <p>Beberapa ilmuwan menduga fenomena ini disebabkan kombinasi cuaca ekstrem, arus laut tidak biasa, dan semburan gas metana dari dasar laut yang membuat kapal tenggelam seketika. Sementara teori konspirasi, dimensi paralel, dan pangkalan bawah laut tetap populer di kalangan penggemar misteri.</p> \
+    <h2 id='bagian3'>Kisah Kapal dan Pesawat Lain</h2> \
+    <p>Selain Flight 19, lebih dari 50 kapal dan pesawat dilaporkan hilang di kawasan ini sejak 1900-an. Beberapa ditemukan rusak parah, sebagian hilang tanpa jejak. Penjelasan resmi jarang bisa mengcover seluruh kasus.</p> \
+    <img src='asset/segitiga.png' alt='Ilustrasi kapal hilang di Segitiga Bermuda'>",
+  "timeline": [
+    {"date": "5 Des 1945", "event": "5 Pesawat Flight 19 hilang kontak saat latihan rutin"},
+    {"date": "8 Des 1945", "event": "Pesawat penyelamat PBM Mariner ikut hilang tanpa jejak"},
+    {"date": "1964", "event": "Istilah 'Segitiga Bermuda' pertama kali dicetuskan oleh Vincent Gaddis"},
+    {"date": "1975", "event": "Penelitian ilmiah menunjukkan semburan gas metana dapat menurunkan kepadatan air"},
+    {"date": "2016", "event": "Ilmuwan mengamati awan heksagonal besar yang diyakini memicu badai lokal"},
+    {"date": "2020", "event": "Drone dan sonar modern memetakan area dasar laut dengan teknologi canggih, beberapa bangkai kapal tetap hilang"}
+  ],
+  "verdict": "Kemungkinan kombinasi cuaca ekstrem, arus laut anomali, dan fenomena geologi langka",
+  "verdictIcon": "🌊",
+  "mysteryLevel": 90,
+  "tags": ["bermuda", "atlantik", "misteri-laut", "flight19", "anomali"]
+  },
+
+  {
+    "id": 3,
+    "title": "Stonehenge",
+    "subtitle": "Monumen Megalitikum yang Menentang Logika",
+    "category": "misteri-dunia",
+    "categoryLabel": "MISTERI DUNIA",
+    "date": "3000 SM",
+    "readTime": 6,
+    "status": "Belum Jelas",
+    "heroBg": "asset/stonehege1.png",
+    "illustration": "https://unsplash.com",
+    "facts": [
+      "Batu Bluestones dibawa dari jarak 240 KM",
+      "Sejajar sempurna dengan titik balik matahari (Solstice)",
+      "Berfungsi sebagai kalender astronomi purba"
+    ],
+    "content": " \
+      <h2 id='bagian1'>Teknik Konstruksi Mustahil</h2> \
+      <img src='asset/stonehege2.png'> \
+      <p>Bagaimana manusia purba memindahkan batu seberat 25 ton tanpa roda atau katrol? Stonehenge bukan sekadar tumpukan batu, melainkan mahakarya teknik yang menghitung pergerakan bintang secara presisi.</p> \
+      <h2 id='bagian2'>Kuburan Massal?</h2> \
+      <img src='asset/stonehege3.png'> \
+      <p>Penggalian terbaru menemukan sisa-sisa manusia, memunculkan teori bahwa lokasi ini adalah tempat penyembuhan sekaligus pemakaman bagi kaum elit zaman dahulu.</p>",
+    "timeline": [
+      {"date": "3000 SM", "event": "Pembangunan parit melingkar pertama"},
+      {"date": "2500 SM", "event": "Batu Sarsen raksasa ditegakkan"},
+      {"date": "1986", "event": "Ditetapkan sebagai Situs Warisan Dunia UNESCO"}
+    ],
+    "verdict": "Pusat ritual astronomi dan pemakaman",
+    "verdictIcon": "🏛️",
+    "mysteryLevel": 80,
+    "tags": ["ancient", "stonehenge", "inggris"]
+  },
+
+  {
+  "id": 4,
+  "title": "Pembunuhan Jack the Ripper",
+  "subtitle": "Pembunuh Berantai Pertama Dunia yang Tak Pernah Tertangkap",
+  "category": "tak-terpecahkan",
+  "categoryLabel": "TAK TERPECAHKAN",
+  "date": "1888",
+  "readTime": 13,
+  "status": "Tak Terpecahkan Resmi",
+  "heroBg": "asset/jek1.png",
+  "illustration": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Jack_the_Ripper_letter.jpg/640px-Jack_the_Ripper_letter.jpg",
+  "facts": [
+    "Minimal 5 korban resmi, semua wanita pekerja seks di Whitechapel, London",
+    "Organ dalam korban diambil dengan presisi — menunjukkan pengetahuan anatomi",
+    "Pelaku mengirim surat ke polisi berisi ejekan dan mengklaim memakan ginjal korban",
+    "Lebih dari 100 tersangka telah diidentifikasi sepanjang sejarah",
+    "Kasus ini menjadi dasar profil kriminal modern dan forensik psikologi"
+  ],
+  "content": " \
+    <h2 id='bagian1'>London 1888: Kota yang Ketakutan</h2> \
+    <img src='asset/jek2.png'> \
+    <p>Musim gugur 1888, distrik Whitechapel di London Timur berubah menjadi tempat paling menakutkan di dunia. Seorang pembunuh yang belum pernah ada sebelumnya mulai membantai wanita-wanita rentan di gang-gang gelap kota Victoria yang penuh kabut. Pembunuh ini bukan sekadar membunuh — ia memutilasi korbannya dengan keahlian yang membuat dokter forensik bergidik. Sayatan yang presisi, pengangkatan organ yang terencana, semua dilakukan dalam kegelapan malam tanpa satu pun saksi mata.</p> \
+    <h2 id='bagian2'>Lima Korban Kanonik</h2> \
+    <img src='asset/jek3.png'> \
+    <p>Mary Ann Nichols, Annie Chapman, Elizabeth Stride, Catherine Eddowes, dan Mary Jane Kelly — lima nama yang dikenal sebagai 'Canonical Five'. Setiap pembunuhan semakin brutal dari sebelumnya. Pada korban terakhir, Mary Jane Kelly, pelaku menghabiskan waktu berjam-jam melakukan mutilasi di dalam kamar sewanya. Kondisi tubuhnya begitu mengerikan sampai sang dokter yang berpengalaman pun merasa mual.</p> \
+    <h2 id='bagian3'>Surat dari Neraka</h2> \
+    <img src='asset/jek4.png'> \
+    <p>Yang membuat kasus ini semakin seram adalah surat-surat yang dikirim kepada polisi dan media. Surat paling terkenal, 'From Hell', dikirim bersama sepotong ginjal manusia yang diklaim sebagai milik salah satu korban. Dokter yang memeriksa ginjal tersebut menyatakan ada tanda-tanda ginjal itu memang diambil dari seorang wanita yang menderita penyakit Bright, sama seperti korban Catherine Eddowes.</p> \
+    <h2 id='bagian4'>Siapa Jack the Ripper?</h2> \
+    <img src='asset/jek5.png'> \
+    <p>Hingga kini lebih dari 100 tersangka telah diteliti. Mulai dari bangsawan, dokter kerajaan, pelukis terkenal Walter Sickert, bahkan seorang wanita. Tahun 2019, sebuah penelitian DNA mengklaim mengidentifikasi pelaku sebagai Aaron Kosminski, tukang cukur Polandia yang memiliki riwayat gangguan jiwa. Namun temuan ini masih diperdebatkan oleh komunitas akademik.</p>",
+  "timeline": [
+    {"date": "31 Agu 1888", "event": "Mary Ann Nichols ditemukan tewas di Buck's Row — korban pertama"},
+    {"date": "8 Sep 1888", "event": "Annie Chapman ditemukan di halaman belakang 29 Hanbury Street"},
+    {"date": "30 Sep 1888", "event": "Double event: Elizabeth Stride dan Catherine Eddowes tewas malam yang sama"},
+    {"date": "1 Okt 1888", "event": "Surat 'Dear Boss' diterima polisi — nama Jack the Ripper pertama kali muncul"},
+    {"date": "9 Nov 1888", "event": "Mary Jane Kelly ditemukan tewas dalam kondisi paling brutal di kamarnya"},
+    {"date": "1891", "event": "Kasus resmi ditutup tanpa penangkapan setelah serangkaian pembunuhan berhenti"},
+    {"date": "2019", "event": "Penelitian DNA oleh Dr. Jari Louhelainen menunjuk Aaron Kosminski sebagai tersangka utama"}
+  ],
+  "verdict": "Identitas pelaku tidak pernah terbukti secara hukum. Tersangka kuat: Aaron Kosminski, namun bukti DNA masih diperdebatkan.",
+  "verdictIcon": "🔪",
+  "mysteryLevel": 85,
+  "tags": ["jack-the-ripper", "london", "pembunuhan", "true-crime", "victorian"]
+},
+
+{
+  "id": 5,
+  "title": "Hilangnya Amelia Earhart",
+  "subtitle": "Penerbang Wanita Terhebat yang Lenyap di Atas Samudra",
+  "category": "tak-terpecahkan",
+  "categoryLabel": "TAK TERPECAHKAN",
+  "date": "1937",
+  "readTime": 11,
+  "status": "Tak Terpecahkan Resmi",
+  "heroBg": "asset/amelia.png",
+  "illustration": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Amelia_Earhart_standing_under_nose_of_her_Lockheed_Electra_10E.jpg/640px-Amelia_Earhart_standing_under_nose_of_her_Lockheed_Electra_10E.jpg",
+  "facts": [
+    "Menghilang saat berusaha menyelesaikan penerbangan keliling dunia pertama oleh wanita",
+    "Transmisi radio terakhir terdengar panik dan membingungkan",
+    "Pencarian terbesar dalam sejarah Angkatan Laut AS saat itu tetap nihil",
+    "Teori terbaru menemukan kemungkinan sisa-sisa pesawat di Pulau Nikumaroro",
+    "Beberapa teori menyebut ia ditangkap Jepang sebagai mata-mata Amerika"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Ambisi Terbesar Seorang Legenda</h2> \
+    <img src='asset/amelia2.png'> \
+    <p>Amelia Earhart bukan sekadar penerbang — ia adalah simbol keberanian wanita di era ketika langit dianggap hanya milik laki-laki. Pada 1932 ia menjadi wanita pertama yang menerbangkan solo melintasi Atlantik. Lima tahun kemudian, ia merencanakan misi terbesarnya: mengelilingi bumi mengikuti garis khatulistiwa. Bersama navigator Fred Noonan, mereka berangkat dari Miami pada 1 Juni 1937.</p> \
+    <h2 id='bagian2'>Transmisi Terakhir yang Penuh Teka-Teki</h2> \
+    <p>Saat mendekati Pulau Howland — titik kritis di Samudra Pasifik yang sangat kecil dan sulit ditemukan — komunikasi radio Earhart semakin tidak jelas. Kapal penjaga pantai Itasca yang menunggu di sana mencatat transmisi terakhirnya sekitar pukul 08.43: ia melaporkan bahan bakar kritis dan tidak bisa menemukan pulau tersebut. Setelah itu, keheningan total.</p> \
+    <h2 id='bagian3'>Tiga Teori Besar</h2> \
+    <img src='asset/amelia3.png'> \
+    <p>Teori pertama dan paling diterima: pesawat kehabisan bahan bakar dan jatuh ke laut. Teori kedua — yang didukung bukti arkeologis terbaru — menyebut Earhart dan Noonan berhasil mendarat darurat di Pulau Nikumaroro (dulu Gardner Island) dan hidup sebagai penyintas selama beberapa waktu sebelum meninggal. Artefak ditemukan di pulau tersebut, termasuk sisa-sisa tulang dan kaca cermin yang mungkin digunakan memberi sinyal. Teori ketiga yang paling kontroversial: Earhart adalah mata-mata Amerika, ditangkap Jepang, dan meninggal dalam tahanan.</p> \
+    <h2 id='bagian4'>Pencarian Tak Berujung</h2> \
+    <img src='asset/amelia4.png'> \
+    <p>Hingga hari ini, ekspedisi terus dilakukan ke Pulau Nikumaroro. Pada 2018, sebuah foto yang ditemukan di arsip Angkatan Laut AS menunjukkan dua sosok yang menyerupai Earhart dan Noonan di tepi dermaga di Kepulauan Marshall — wilayah yang saat itu dikuasai Jepang. FBI kemudian menganalisis foto tersebut namun tidak bisa memastikan identitasnya.</p>",
+  "timeline": [
+    {"date": "1 Jun 1937", "event": "Earhart dan Noonan berangkat dari Miami memulai penerbangan keliling dunia"},
+    {"date": "29 Jun 1937", "event": "Mereka tiba di Lae, Papua Nugini — titik pemberangkatan terakhir"},
+    {"date": "2 Jul 1937", "event": "Transmisi radio terakhir tercatat pukul 08.43, pesawat hilang"},
+    {"date": "19 Jul 1937", "event": "Pencarian resmi dihentikan setelah 16 hari dan biaya 4 juta dollar"},
+    {"date": "1940", "event": "Kerangka manusia ditemukan di Pulau Nikumaroro, namun diabaikan saat itu"},
+    {"date": "2018", "event": "Foto arsip Angkatan Laut memunculkan teori baru penangkapan Jepang"},
+    {"date": "2023", "event": "Ekspedisi terbaru ke Nikumaroro menemukan fragmen aluminium yang diduga dari pesawat Earhart"}
+  ],
+  "verdict": "Kemungkinan besar kehabisan bahan bakar dan jatuh di Pasifik, namun teori pendaratan darurat di Nikumaroro semakin kuat dengan bukti arkeologis.",
+  "verdictIcon": "✈️",
+  "mysteryLevel": 88,
+  "tags": ["amelia-earhart", "penerbangan", "pasifik", "hilang", "wanita-pahlawan"]
+},
+
+{
+  "id": 6,
+  "title": "Kematian Marilyn Monroe",
+  "subtitle": "Overdosis, Bunuh Diri, atau Pembunuhan Terencana?",
+  "category": "tak-terpecahkan",
+  "categoryLabel": "TAK TERPECAHKAN",
+  "date": "1962",
+  "readTime": 12,
+  "status": "Ditutup (Overdosis Kemungkinan Bunuh Diri)",
+  "heroBg": "asset/marilyn2.png",
+  "illustration": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Marilyn_Monroe_in_Some_Like_It_Hot_trailer.jpg/640px-Marilyn_Monroe_in_Some_Like_It_Hot_trailer.jpg",
+  "facts": [
+    "Ditemukan meninggal tanggal 5 Agustus 1962 dalam kondisi memegang gagang telepon",
+    "Kadar Nembutal (barbiturat) dalam darahnya 8 kali dosis mematikan",
+    "Tidak ada gelas air ditemukan di kamar — lalu bagaimana ia menelan 47 pil?",
+    "Laporan otopsi asli hilang dari arsip Los Angeles",
+    "Koneksi dekat dengan John F. Kennedy dan Robert F. Kennedy membuat kasus ini sangat sensitif"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Malam Terakhir di Brentwood</h2> \
+    <img src='asset/mari3.png'> \
+    <p>Sabtu malam, 4 Agustus 1962. Marilyn Monroe berada di rumahnya di 12305 Fifth Helena Drive, Brentwood. Sekretarisnya, Eunice Murray, tidur di kamar sebelah. Sekitar tengah malam, Murray terbangun dan melihat cahaya dari bawah pintu kamar Marilyn. Pintu terkunci. Ia memanggil psikiater Marilyn, Dr. Ralph Greenson. Saat pintu didobrak, Marilyn ditemukan telungkup di atas tempat tidur, tidak bernyawa.</p> \
+    <h2 id='bagian2'>Kejanggalan yang Tidak Terjawab</h2> \
+    <img src='asset/mari4.png'> \
+    <p>Kematian dinyatakan akibat overdosis barbiturat. Namun semakin banyak pertanyaan yang muncul. Pertama: tidak ada gelas air atau bekas minuman di kamarnya — mustahil seseorang menelan 47-48 kapsul tanpa cairan. Kedua: kadar obat di lambungnya tidak sebanding dengan kadar di darahnya, mengisyaratkan kemungkinan injeksi. Ketiga: ada jeda waktu antara kematian dan pelaporan ke polisi yang tidak pernah dijelaskan dengan memuaskan.</p> \
+    <h2 id='bagian3'>Hubungan dengan Kennedy Bersaudara</h2> \
+    <p>Marilyn dikenal memiliki hubungan dekat dengan Presiden John F. Kennedy dan Jaksa Agung Robert F. Kennedy. Beberapa hari sebelum kematiannya, ia dikabarkan mengancam akan menggelar konferensi pers untuk mengungkap hal-hal yang ia ketahui tentang kehidupan pribadi mereka. CIA dan FBI diketahui memiliki file pengawasan tebal tentang Marilyn. Dokumen-dokumen ini baru sebagian dirilis ke publik puluhan tahun kemudian.</p> \
+    <h2 id='bagian4'>Saksi yang Mengubah Kesaksian</h2> \
+    <p>Eunice Murray, sang sekretaris, mengubah kesaksiannya beberapa kali sepanjang hidupnya. Sesaat sebelum meninggal di tahun 1994, ia mengaku dalam sebuah wawancara bahwa ada 'banyak hal yang terjadi malam itu' yang tidak pernah ia ceritakan. Hingga kini, tidak ada penyelidikan ulang yang pernah dibuka secara resmi.</p>",
+  "timeline": [
+    {"date": "1 Agu 1962", "event": "Marilyn Monroe dipecat dari film 'Something's Got to Give' oleh Fox"},
+    {"date": "4 Agu 1962", "event": "Marilyn menjalani sesi pemotretan terakhir — tampak ceria dan bersemangat"},
+    {"date": "4 Agu 1962", "event": "Malam hari: Robert F. Kennedy dilaporkan mengunjungi rumah Marilyn"},
+    {"date": "5 Agu 1962", "event": "Pukul 03.30 dini hari: Eunice Murray menemukan Marilyn tidak responsif"},
+    {"date": "5 Agu 1962", "event": "Pukul 04.25: Kematian dilaporkan ke polisi (mengapa butuh hampir 1 jam?)"},
+    {"date": "1982", "event": "Investigasi ulang oleh Jaksa Distrik LA tidak menemukan bukti pembunuhan"},
+    {"date": "1994", "event": "Eunice Murray mengisyaratkan ada hal yang disembunyikan sebelum meninggal"}
+  ],
+  "verdict": "Secara resmi overdosis yang mungkin bunuh diri, namun kejanggalan forensik dan keterlibatan figur politik membuat kasus ini terus diperdebatkan.",
+  "verdictIcon": "💊",
+  "mysteryLevel": 87,
+  "tags": ["marilyn-monroe", "hollywood", "kennedy", "konspirasi", "overdosis"]
+},
+
+{
+  "id": 7,
+  "title": "The Zodiac Killer",
+  "subtitle": "Pembunuh yang Mengirim Sandi Kepada Koran",
+  "category": "tak-terpecahkan",
+  "categoryLabel": "TAK TERPECAHKAN",
+  "date": "1968 - 1969",
+  "readTime": 14,
+  "status": "Tak Terpecahkan Resmi",
+  "heroBg": "asset/zod1.png",
+  "illustration": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Zodiac_composite.jpg/400px-Zodiac_composite.jpg",
+  "facts": [
+    "Mengklaim membunuh 37 orang, polisi hanya bisa konfirmasi 5 korban",
+    "Mengirim 4 surat berisi kriptogram ke koran — hanya satu yang berhasil dipecahkan",
+    "Kriptogram ke-4 (340 karakter) baru dipecahkan pada Desember 2020 oleh tim amatir",
+    "Pernah menelepon polisi dan berbicara langsung tentang kejahatan yang ia lakukan",
+    "Satu-satunya korban yang berhasil kabur memberikan sketsa wajah yang ikonik"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Pembunuh yang Mencari Ketenaran</h2> \
+    <p>Tidak seperti pembunuh berantai lain yang berusaha menghindari deteksi, Zodiac justru menginginkan perhatian. Ia secara aktif menghubungi surat kabar San Francisco Chronicle dan Examiner, mengirimkan surat-surat yang menantang polisi untuk menangkapnya. Dalam satu suratnya, ia menulis: 'Saya suka membunuh manusia karena sangat menyenangkan, lebih menyenangkan dari membunuh hewan di hutan.'</p> \
+    <h2 id='bagian2'>Para Korban</h2> \
+    <img src='asset/zod2.png'>\
+    <p>Korban pertama yang dikonfirmasi adalah sepasang kekasih muda yang ditembak di tepi Danau Herman, California, pada Desember 1968. Selama setahun berikutnya, serangkaian serangan terjadi — beberapa di tepi danau, satu di tengah siang bolong di pusat kota. Satu korban, Bryan Hartnell, berhasil selamat meski ditusuk berkali-kali. Ia menggambarkan pelaku sebagai pria bertubuh besar dengan topeng hitam bergambar simbol Zodiac.</p> \
+    <h2 id='bagian3'>Kriptogram yang Membingungkan Dunia</h2> \
+    <img src='asset/zod3.png'>\
+    <p>Zodiac mengirimkan empat pesan dalam bentuk kriptogram — gabungan simbol dan huruf yang ia klaim berisi identitasnya. Kriptogram pertama (408 karakter) dipecahkan oleh pasangan guru dalam waktu seminggu. Isinya tidak menyebutkan nama, hanya filosofi gelap tentang kesenangan membunuh. Kriptogram keempat — yang ia kirim pada 1969 — baru berhasil dipecahkan 51 tahun kemudian pada Desember 2020. Isinya masih tidak mengungkap identitas pelaku.</p> \
+    <h2 id='bagian4'>Tersangka Utama: Arthur Leigh Allen</h2> \
+    <img src='asset/zod4.png'>\
+    <p>Meskipun tidak pernah ditangkap atau didakwa secara resmi, Arthur Leigh Allen adalah tersangka terkuat yang pernah diidentifikasi. Saat digeledah, polisi menemukan barang-barang yang mengkhawatirkan, termasuk pisau berlumuran darah dan novel yang menginspirasi nama 'Zodiac'. Namun, tes DNA dan sidik jari tidak cocok dengan bukti di TKP. Allen meninggal pada 1992 tanpa pernah terbukti bersalah.</p>",
+  "timeline": [
+    {"date": "20 Des 1968", "event": "Korban pertama: David Faraday dan Betty Lou Jensen ditembak di Benicia"},
+    {"date": "4 Jul 1969", "event": "Mike Mageau ditembak, Darlene Ferrin tewas — pelaku menelepon polisi setelahnya"},
+    {"date": "1 Agu 1969", "event": "Tiga surat pertama Zodiac dikirim ke koran beserta bagian kriptogram"},
+    {"date": "27 Sep 1969", "event": "Bryan Hartnell dan Cecelia Shepard ditusuk — Hartnell selamat dan memberi deskripsi pelaku"},
+    {"date": "11 Okt 1969", "event": "Sopir taksi Paul Stine tewas ditembak di San Francisco"},
+    {"date": "1971", "event": "Surat terakhir yang dikonfirmasi dari Zodiac dikirim"},
+    {"date": "Des 2020", "event": "Kriptogram Z340 akhirnya dipecahkan oleh tim amatir internasional"}
+  ],
+  "verdict": "Identitas pelaku tidak pernah terbukti secara hukum. Arthur Leigh Allen adalah tersangka terkuat, namun bukti forensik tidak mencukupi untuk dakwaan.",
+  "verdictIcon": "⭕",
+  "mysteryLevel": 93,
+  "tags": ["zodiac", "serial-killer", "california", "kriptogram", "true-crime"]
+},
+
+{
+  "id": 8,
+  "title": "Kematian Edgar Allan Poe",
+  "subtitle": "Penulis Horor Terbesar Meninggal dengan Cara Paling Misterius",
+  "category": "misteri-dunia",
+  "categoryLabel": "MISTERI DUNIA",
+  "date": "1849",
+  "readTime": 9,
+  "status": "Tak Terpecahkan",
+  "heroBg": "asset/ed1.png",
+  "illustration": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Edgar_Allan_Poe_daguerreotype_crop.png/440px-Edgar_Allan_Poe_daguerreotype_crop.png",
+  "facts": [
+    "Ditemukan di jalanan Baltimore memakai pakaian orang lain dan tampak bingung",
+    "Dalam empat hari terakhir hidupnya, ia hanya memanggil nama 'Reynolds' berulang kali",
+    "Tidak ada catatan medis atau sertifikat kematian asli yang masih ada",
+    "Penyebab kematian di surat kabar zaman itu hanya disebut 'phrenitis' (radang otak)",
+    "Teori modern meliputi keracunan, rabies, hingga cooping (penipuan pemilu)"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Empat Hari yang Hilang</h2> \
+    <img src='asset/ed2.png'>\
+    <p>Edgar Allan Poe meninggalkan Richmond, Virginia pada 27 September 1849, menuju New York. Ia seharusnya tiba dalam hitungan hari. Namun selama empat hari berikutnya, tidak seorang pun tahu di mana ia berada. Kemudian pada 3 Oktober 1849, ia ditemukan oleh seorang kenalan di depan sebuah kedai minum di Baltimore — tidak dalam kondisi mabuk, melainkan dalam keadaan bingung total, mengenakan jas butut milik orang lain, dan sama sekali tidak mengenali siapa pun di sekitarnya.</p> \
+    <h2 id='bagian2'>Hari-hari Terakhir yang Delirious</h2> \
+    <p>Poe segera dibawa ke Washington College Hospital. Selama empat hari di rumah sakit, ia berada dalam kondisi delirium parah — kadang berteriak, kadang berbisik ketakutan tentang hal-hal yang tidak bisa dimengerti. Satu-satunya kata yang jelas diucapkannya berulang kali adalah nama 'Reynolds' — identitas yang hingga hari ini tidak diketahui siapa yang dimaksud. Pada 7 Oktober 1849, ia menghembuskan napas terakhir.</p> \
+    <h2 id='bagian3'>Teori-Teori yang Beredar</h2> \
+    <img src='asset/ed3.png'>\
+    <p>Teori 'cooping' menyebut Poe menjadi korban geng politik yang memaksa warga untuk memilih berkali-kali di berbagai TPS, mengganti pakaian setiap kali, dan memberikan mereka alkohol. Teori rabies didukung oleh gejala-gejalanya yang cocok: hidrofobia, fluktuasi kesadaran, dan halusinasi. Teori keracunan timbal atau karbon monoksida juga diajukan. Ironisnya, seorang ahli fiksi horor terbesar meninggal dengan cara yang tidak kalah misterius dari cerita-ceritanya sendiri.</p>",
+  "timeline": [
+    {"date": "27 Sep 1849", "event": "Poe meninggalkan Richmond, Virginia — terakhir kali terlihat dalam kondisi baik"},
+    {"date": "3 Okt 1849", "event": "Ditemukan di depan kedai minum Gunner's Hall, Baltimore, dalam kondisi delirious"},
+    {"date": "3-6 Okt 1849", "event": "Dirawat di Washington College Hospital, memanggil nama 'Reynolds' berulang kali"},
+    {"date": "7 Okt 1849", "event": "Edgar Allan Poe meninggal dunia pukul 05.00 pagi"},
+    {"date": "1996", "event": "Dokter R. Michael Benitez mengajukan teori rabies berdasarkan deskripsi gejala"}
+  ],
+  "verdict": "Penyebab kematian resmi tidak pernah ditetapkan dengan pasti. Rabies dan cooping politik adalah teori terkuat hingga saat ini.",
+  "verdictIcon": "🪶",
+  "mysteryLevel": 78,
+  "tags": ["edgar-allan-poe", "sastrawan", "baltimore", "misteri-sejarah"]
+},
+
+{
+  "id": 9,
+  "title": "Peristiwa Tunguska",
+  "subtitle": "Ledakan Terbesar dalam Sejarah Manusia Tanpa Kawah",
+  "category": "insiden",
+  "categoryLabel": "INSIDEN",
+  "date": "30 Juni 1908",
+  "readTime": 10,
+  "status": "Terpecahkan (Asteroid/Komet)",
+  "heroBg": "asset/tung1.png",
+  "illustration": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Tunguska_event_fallen_trees.jpg/640px-Tunguska_event_fallen_trees.jpg",
+  "facts": [
+    "Ledakan setara 10-15 megaton TNT — 1000 kali lebih kuat dari bom atom Hiroshima",
+    "Meratakan 2.150 km² hutan Siberia — sekitar 80 juta pohon roboh seketika",
+    "Tidak ditemukan kawah sama sekali di lokasi kejadian",
+    "Gelombang ledakan mengelilingi bumi dua kali dan terdeteksi stasiun barometri di seluruh dunia",
+    "Penduduk adat Evenki yang berada 60 km dari pusat ledakan terlempar oleh gelombang panas"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Pagi yang Mengubah Siberia Selamanya</h2> \
+    <img src='asset/tung3.png'>\
+    <p>Pukul 07.17 pagi, 30 Juni 1908. Di atas hutan belantara Siberia yang sepi, sebuah cahaya biru lebih terang dari matahari melesat di langit dengan kecepatan luar biasa. Beberapa detik kemudian, ledakan dahsyat mengguncang bumi. Para penggembala rusa yang berada 60 kilometer dari pusat ledakan terlempar dari kaki mereka, tenda-tenda terbakar, dan kuda-kuda mereka berlari panik. Di kota Vanavara, sekitar 65 km dari pusat ledakan, jendela-jendela pecah dan pintu-pintu terlepas dari engselnya.</p> \
+    <h2 id='bagian2'>Hutan yang Rata Seperti Korek Api Raksasa</h2> \
+     <img src='asset/tung4.png'>\
+    <p>Saat ekspedisi pertama akhirnya berhasil mencapai lokasi 19 tahun kemudian (1927), pemimpin ekspedisi Leonid Kulik terpana oleh pemandangan di depannya. Jutaan pohon berusia ratusan tahun telah roboh membentuk pola melingkar sempurna, semuanya mengarah ke luar dari satu titik pusat — seperti jarum jam yang menunjuk ke luar. Yang membuat Kulik bingung: tidak ada kawah. Sama sekali tidak ada kawah.</p> \
+    <h2 id='bagian3'>Misteri Tanpa Kawah</h2> \
+     <img src='asset/tung5.png'>\
+    <p>Tidak adanya kawah menjadi teka-teki selama puluhan tahun. Teori-teori liar bermunculan: antimatter, lubang hitam mini, bahkan kapal alien yang meledak. Penjelasan ilmiah yang kini paling diterima adalah ledakan udara (airburst) — asteroid atau fragmen komet yang meledak di atmosfer sebelum menyentuh tanah, melepaskan energi luar biasa tanpa meninggalkan jejak fisik di permukaan. Pada 2013, model komputer berhasil merekonstruksi lintasan dan ukuran benda langit tersebut.</p> \
+    <h2 id='bagian4'>Peringatan untuk Masa Depan</h2> \
+    <p>Peristiwa Tunguska kini menjadi studi kasus utama dalam pertahanan planet. Jika objek serupa jatuh di atas kota besar, jutaan nyawa akan melayang dalam hitungan detik. Asteroid 2013 Chelyabinsk yang meledak di atas Rusia — melukai lebih dari 1.500 orang — dianggap sebagai pengingat bahwa ancaman dari langit itu nyata dan bisa datang tanpa peringatan.</p>",
+  "timeline": [
+    {"date": "30 Jun 1908", "event": "Pukul 07.17: Ledakan dahsyat di atas Hutan Siberia, Rusia"},
+    {"date": "1908", "event": "Gelombang tekanan udara mengelilingi bumi dua kali, terdeteksi di seluruh Eropa"},
+    {"date": "1921", "event": "Leonid Kulik membaca laporan lama dan memutuskan untuk mengorganisir ekspedisi"},
+    {"date": "1927", "event": "Ekspedisi pertama Kulik mencapai lokasi — tidak menemukan kawah, hanya hutan roboh"},
+    {"date": "1965", "event": "Ilmuwan Cheko menemukan danau kecil yang mungkin terbentuk dari fragmen objek"},
+    {"date": "2013", "event": "Asteroid Chelyabinsk mengingatkan dunia tentang ancaman serupa Tunguska"}
+  ],
+  "verdict": "Ledakan udara (airburst) oleh asteroid atau fragmen komet berdiameter 50-80 meter yang hancur di atmosfer sebelum menyentuh tanah.",
+  "verdictIcon": "☄️",
+  "mysteryLevel": 55,
+  "tags": ["tunguska", "asteroid", "siberia", "ledakan", "sains"]
+},
+
+{
+  "id": 10,
+  "title": "Kode Beale",
+  "subtitle": "Harta Karun Tersembunyi yang Nilainya Triliunan Rupiah",
+  "category": "misteri-dunia",
+  "categoryLabel": "MISTERI DUNIA",
+  "date": "1820 - Sekarang",
+  "readTime": 10,
+  "status": "Belum Terpecahkan",
+  "heroBg": "asset/bea2.png",
+  "illustration": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Beale_ciphers_and_the_declaration.jpg/640px-Beale_ciphers_and_the_encryption.jpg",
+  "facts": [
+    "Tiga lembar kertas berisi angka-angka acak yang mengklaim menunjuk lokasi harta karun",
+    "Hanya satu dari tiga kode yang berhasil dipecahkan — menggunakan Deklarasi Kemerdekaan AS sebagai kunci",
+    "Nilai harta karun diperkirakan setara lebih dari 60 juta dollar di nilai saat ini",
+    "Seorang pria bernama Thomas Beale meninggalkan kode ini di hotel Virginia pada 1820-an",
+    "Banyak ahli kriptografi — termasuk dari NSA — percaya dua kode lainnya mungkin tidak bisa dipecahkan"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Kotak Besi di Hotel Lynchburg</h2> \
+    <p>Sekitar tahun 1820, seorang pria tampan bernama Thomas Jefferson Beale menginap di Washington Hotel, Lynchburg, Virginia. Ia menitipkan sebuah kotak besi kepada pemilik hotel, Robert Morriss, dan berjanji akan kembali. Beale tidak pernah kembali. Puluhan tahun kemudian, Morriss membuka kotak tersebut dan menemukan tiga lembar kertas penuh angka-angka misterius beserta surat penjelasan yang mengklaim bahwa angka-angka itu menyimpan lokasi harta karun senilai ribuan kilo emas, perak, dan batu berharga yang dikubur di suatu tempat di Virginia.</p> \
+    <h2 id='bagian2'>Satu Kode Terpecahkan, Dua Sisanya Masih Gelap</h2> \
+    <p>Kode kedua berhasil dipecahkan menggunakan Deklarasi Kemerdekaan Amerika sebagai kunci. Setiap angka merujuk pada kata di deklarasi tersebut, dan huruf pertama kata itu membentuk pesan. Kode dua mendeskripsikan isi harta karun: emas dan perak senilai jutaan dolar yang dikubur di Bedford County, Virginia, pada kedalaman sekitar enam kaki. Kode pertama seharusnya berisi lokasi persisnya. Kode ketiga berisi nama para pemilik harta. Keduanya, hingga hari ini, belum bisa dipecahkan.</p> \
+    <h2 id='bagian3'>Hoaks atau Harta Nyata?</h2> \
+    <p>Banyak kriptografer modern, termasuk analis dari NSA, mulai meragukan keaslian kode Beale. Analisis statistik menunjukkan distribusi angka yang terlalu 'acak' secara tidak alami, menunjukkan kemungkinan rekayasa. Namun di sisi lain, tidak ada yang bisa membuktikan ini adalah hoaks. Ribuan pemburu harta karun telah menggali Virginia Barat selama dua abad. Belum ada yang menemukan apa pun — dan belum ada yang benar-benar menyerah.</p>",
+  "timeline": [
+    {"date": "1820", "event": "Thomas Beale menitipkan kotak besi berisi kode kepada Robert Morriss di Lynchburg"},
+    {"date": "1823", "event": "Beale mengirim surat dari St. Louis — surat terakhirnya yang pernah diterima"},
+    {"date": "1863", "event": "Morriss yang sudah tua mewariskan kotak dan kode kepada teman kepercayaannya"},
+    {"date": "1885", "event": "Pamflet pertama berisi kode Beale diterbitkan dan dijual ke publik"},
+    {"date": "1983", "event": "Analis NSA Carl Hammer mempelajari kode dan menyimpulkan kemungkinan besar adalah hoaks"},
+    {"date": "Sekarang", "event": "Komunitas online dan pemburu harta karun masih aktif mencari solusi dua kode yang belum terpecahkan"}
+  ],
+  "verdict": "Kemungkinan hoaks yang sangat terencana, namun kode kedua yang berhasil dipecahkan menjaga harapan bahwa harta karun itu nyata.",
+  "verdictIcon": "💰",
+  "mysteryLevel": 82,
+  "tags": ["beale", "harta-karun", "kriptografi", "virginia", "misteri-sejarah"]
+},
+
+{
+  "id": 11,
+  "title": "Teori Flat Earth",
+  "subtitle": "Skeptisisme Terhadap Sains Modern",
+  "category": "teori",
+  "categoryLabel": "TEORI",
+  "date": "Abad 19 - Sekarang",
+  "readTime": 5,
+  "status": "Kontroversial",
+  "heroBg": "asset/flat1.png",
+  "illustration": "https://unsplash.com",
+  "facts": [
+    "Percaya Antartika adalah dinding es raksasa",
+    "Menganggap gravitasi adalah efek akselerasi ke atas",
+    "Curiga terhadap semua dokumentasi luar angkasa NASA"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Kebangkitan Era Digital</h2> \
+    <p>Meskipun sains telah membuktikan bumi bulat selama ribuan tahun, internet membangkitkan kembali komunitas Bumi Datar. Mereka mengandalkan observasi mata telanjang dan ketidakpercayaan pada otoritas pemerintah.</p> \
+    <h2 id='bagian2'>Eksperimen Bedfort Level</h2> \
+    <p>Argumen klasik mereka didasarkan pada eksperimen Samuel Rowbotham yang merasa permukaan air tidak melengkung di sungai sepanjang 9km.</p>",
+  "timeline": [
+    {"date": "1849", "event": "Samuel Rowbotham menerbitkan Astronomi Zetetic"},
+    {"date": "1956", "event": "Pembentukan Flat Earth Society modern"},
+    {"date": "2017", "event": "Konferensi Internasional Bumi Datar pertama digelar"}
+  ],
+  "verdict": "Gerakan sosial berbasis skeptisisme radikal",
+  "verdictIcon": "🪐",
+  "mysteryLevel": 40,
+  "tags": ["konspirasi", "flat-earth", "sains"]
+},
+
+{
+  "id": 12,
+  "title": "Roswell Incident",
+  "subtitle": "Kecelakaan yang Mengubah Sejarah UFO",
+  "category": "misteri-dunia",
+  "categoryLabel": "MISTERI DUNIA",
+  "date": "1947",
+  "readTime": 6,
+  "status": "Classified",
+  "heroBg": "asset/rosw1.png",
+  "illustration": "asset/rosswel.png",
+  "facts": [
+    "Militer awalnya mengakui menemukan piring terbang",
+    "Material puing memiliki 'ingatan' bentuk",
+    "Kaitan erat dengan Area 51"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Pernyataan yang Ditarik</h2> \
+    <p>Juli 1947, Roswell Army Air Field merilis pernyataan mengejutkan bahwa mereka menemukan 'flying disc'. Hanya dalam hitungan jam, pernyataan itu diralat menjadi 'balon cuaca'.</p> \
+    <h2 id='bagian2'>Project Mogul</h2> \
+    <img src='asset/rosw2.png' alt='Foto rosswel'> \
+    <p>Tahun 1990-an, dokumen rahasia menyebut itu adalah bagian dari Project Mogul, balon mata-mata untuk mendeteksi nuklir Soviet. Namun, bagi penganut teori konspirasi, ini hanyalah upaya menutup-nutupi kontak alien pertama.</p>",
+  "timeline": [
+    {"date": "4 Juli 1947", "event": "Kecelakaan terjadi di sebuah peternakan"},
+    {"date": "8 Juli 1947", "event": "Berita 'Piring Terbang' menghiasi koran lokal"},
+    {"date": "1994", "event": "Laporan resmi AU Amerika merujuk pada Project Mogul"}
+  ],
+  "verdict": "Antara teknologi militer rahasia atau ekstraterestrial",
+  "verdictIcon": "👽",
+  "mysteryLevel": 90,
+  "tags": ["ufo", "roswell", "alien"]
+},
+
+{
+  "id": 13,
+  "title": "The Cicada 3301",
+  "subtitle": "Teka-teki Internet Paling Berbahaya",
+  "category": "teori",
+  "categoryLabel": "TEORI",
+  "date": "2012 - 2014",
+  "readTime": 9,
+  "status": "Selesai / Tersembunyi",
+  "heroBg": "asset/cica1.png",
+  "illustration": "https://unsplash.com",
+  "facts": [
+    "Menggunakan steganografi tingkat tinggi (pesan di dalam gambar)",
+    "Melibatkan lokasi fisik di seluruh dunia (GPS)",
+    "Diduga rekrutmen untuk badan intelijen seperti CIA atau kelompok hacker"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Pesan di 4chan</h2> \
+    <p>Januari 2012, sebuah gambar muncul di internet dengan pesan: 'Kami mencari individu yang sangat cerdas. Untuk menemukan mereka, kami telah menyusun sebuah tes.' Ini adalah awal dari perburuan harta karun digital paling rumit dalam sejarah.</p> \
+    <h2 id='bagian2'>Dunia Nyata Beradu Digital</h2> \
+    <p>Para pemecah kode harus pergi ke koordinat fisik di Polandia, AS, hingga Jepang untuk menemukan petunjuk di tiang lampu. Siapa di balik 3301? Hingga kini, mereka yang berhasil 'lulus' tidak pernah terdengar lagi kabarnya.</p>",
+  "timeline": [
+    {"date": "5 Jan 2012", "event": "Gambar cicada pertama kali diunggah"},
+    {"date": "Jan 2013", "event": "Putaran kedua teka-teki dimulai"},
+    {"date": "Mei 2014", "event": "Pesan terakhir muncul dan organisasi menghilang"}
+  ],
+  "verdict": "Sistem rekrutmen elit untuk organisasi bayangan",
+  "verdictIcon": "📟",
+  "mysteryLevel": 95,
+  "tags": ["internet", "hacker", "cicada"]
+},
+
+{
+  "id": 14,
+  "title": "The Hinterkaifeck Murders",
+  "subtitle": "Pembantaian di Peternakan Terpencil",
+  "category": "insiden",
+  "categoryLabel": "INSIDEN",
+  "date": "1922",
+  "readTime": 10,
+  "status": "Tak Terpecahkan",
+  "heroBg": "asset/hint2.png",
+  "illustration": "https://unsplash.com",
+  "facts": [
+    "Pelaku tinggal di loteng rumah korban selama berhari-hari sebelum beraksi",
+    "Koran asing ditemukan di rumah padahal tidak ada yang berlangganan",
+    "Hewan ternak tetap diberi makan setelah seluruh keluarga tewas"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Jejak Kaki di Salju</h2> \
+    <p>Beberapa hari sebelum kejadian, sang ayah menemukan jejak kaki di salju yang menuju ke rumah mereka, namun tidak ada jejak kaki yang keluar. Ia juga mendengar suara langkah kaki di loteng, tapi tidak menemukan siapa pun.</p> \
+    <h2 id='bagian2'>Kehidupan Setelah Kematian</h2> \
+    <p>Enam orang tewas dengan cangkul. Yang mengerikan, pelaku diduga menetap di rumah itu selama 3 hari bersama mayat-mayat tersebut, memasak di dapur, dan memberi makan sapi sebelum akhirnya menghilang selamanya.</p>",
+  "timeline": [
+    {"date": "Maret 1922", "event": "Keluarga melaporkan keanehan di rumah"},
+    {"date": "31 Mar 1922", "event": "Pembantaian terjadi (perkiraan)"},
+    {"date": "4 Apr 1922", "event": "Warga menemukan jenazah keluarga Gruber"}
+  ],
+  "verdict": "Pembunuh berantai yang sangat sabar atau hantu masa lalu",
+  "verdictIcon": "🪓",
+  "mysteryLevel": 99,
+  "tags": ["true-crime", "jerman", "horor"]
+},
+
+{
+  "id": 15,
+  "title": "The Voynich Manuscript",
+  "subtitle": "Buku yang Tidak Bisa Dibaca Siapa Pun",
+  "category": "misteri-dunia",
+  "categoryLabel": "MISTERI DUNIA",
+  "date": "Abad ke-15",
+  "readTime": 8,
+  "status": "Belum Terpecahkan",
+  "heroBg": "asset/vo1.png",
+  "illustration": "https://unsplash.com",
+  "facts": [
+    "Ditulis dalam bahasa atau sandi yang tidak dikenal di bumi",
+    "Berisi gambar tanaman yang tidak pernah ada di dunia nyata",
+    "Uji karbon menunjukkan buku ini berasal dari tahun 1404-1438"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Sandi yang Menghancurkan Karir</h2> \
+    <p>Naskah ini telah dipelajari oleh pemecah kode terbaik Perang Dunia II, namun tetap tidak terbaca. Isinya penuh dengan ilustrasi botani, astronomi, dan wanita yang mandi di kolam aneh.</p> \
+    <h2 id='bagian2'>Bahasa Alien atau Hoaks Jenius?</h2> \
+    <p>Beberapa teori menyebut ini adalah buku panduan pengobatan kuno, bahasa yang hilang, atau karya seorang alkemis yang mencoba menyembunyikan penemuannya dari Gereja.</p>",
+  "timeline": [
+    {"date": "1404", "event": "Perkiraan waktu pembuatan berdasarkan uji karbon"},
+    {"date": "1912", "event": "Wilfrid Voynich menemukan naskah ini di Italia"},
+    {"date": "2018", "event": "AI mulai digunakan untuk memecahkan bahasa namun gagal"}
+  ],
+  "verdict": "Peninggalan peradaban yang hilang atau bahasa rahasia alkemis",
+  "verdictIcon": "📜",
+  "mysteryLevel": 92,
+  "tags": ["manuskrip", "sejarah", "kriptografi"]
+},
+
+{
+  "id": 16,
+  "title": "The Mandela Effect",
+  "subtitle": "Ingatan Kolektif yang Salah atau Glitch Reality?",
+  "category": "teori",
+  "categoryLabel": "TEORI",
+  "date": "2010 - Sekarang",
+  "readTime": 6,
+  "status": "Debatable",
+  "heroBg": "asset/mn2.png",
+  "illustration": "https://unsplash.com",
+  "facts": [
+    "Jutaan orang ingat Nelson Mandela meninggal di penjara tahun 1980-an",
+    "Pikachu sebenarnya tidak punya warna hitam di ujung ekornya",
+    "Perubahan detail kecil pada logo atau judul film terkenal"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Kita Berada di Timeline yang Berbeda?</h2> \
+    <p>Efek Mandela terjadi ketika sekelompok besar orang memiliki ingatan yang sangat jelas tentang sesuatu yang sebenarnya tidak pernah terjadi. Apakah memori kita yang rusak, atau kita telah berpindah ke alam semesta paralel?</p> \
+    <h2 id='bagian2'>Teori CERN</h2> \
+    <p>Beberapa orang menyalahkan eksperimen partikel di CERN (LHC) yang dianggap telah merobek struktur ruang-waktu dan mencampurkan dua realitas yang berbeda.</p>",
+  "timeline": [
+    {"date": "2010", "event": "Fiona Broome menciptakan istilah Mandela Effect"},
+    {"date": "2012", "event": "CERN menemukan partikel Higgs-Boson (titik kecurigaan)"},
+    {"date": "Sekarang", "event": "Ribuan contoh baru terus ditemukan di budaya populer"}
+  ],
+  "verdict": "Fenomena psikologi massa atau anomali dimensi",
+  "verdictIcon": "🌀",
+  "mysteryLevel": 75,
+  "tags": ["parallel-universe", "psikologi", "cern"]
+},
+
+{
+  "id": 17,
+  "title": "The Dancing Plague",
+  "subtitle": "Wabah Menari Sampai Mati di Strasbourg",
+  "category": "insiden",
+  "categoryLabel": "INSIDEN",
+  "date": "1518",
+  "readTime": 7,
+  "status": "Terpecahkan (Secara Medis)",
+  "heroBg": "asset/dnc1.png",
+  "illustration": "https://unsplash.com",
+  "facts": [
+    "Dimulai dari satu wanita (Frau Troffea) yang menari tanpa henti",
+    "Dalam sebulan, 400 orang ikut menari tanpa musik",
+    "Banyak yang meninggal karena serangan jantung dan kelelahan"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Kota yang Berjoget Mencekam</h2> \
+    <img src='asset/dnc2.png'> \
+    <p>Bayangkan melihat ratusan orang menari di jalanan dengan wajah penuh penderitaan, tidak bisa berhenti meskipun kaki mereka berdarah. Pemerintah setempat bahkan menyediakan panggung dan musik karena mengira mereka butuh 'menyalurkan' energi tersebut.</p> \
+    <h2 id='bagian2'>Keracunan Jamur atau Histeria?</h2> \
+    <p>Teori ilmiah menyebut ini disebabkan oleh Ergotism, keracunan jamur pada roti gandum yang memiliki efek serupa LSD. Namun, banyak sejarawan lebih percaya ini adalah histeria massa akibat tekanan hidup yang luar biasa.</p>",
+  "timeline": [
+    {"date": "Juli 1518", "event": "Frau Troffea mulai menari di jalanan"},
+    {"date": "Agu 1518", "event": "Jumlah korban mencapai puncak (400 orang)"},
+    {"date": "Sep 1518", "event": "Wabah berhenti setelah korban dibawa ke kuil suci"}
+  ],
+  "verdict": "Histeria massa sosiogenik atau keracunan massal",
+  "verdictIcon": "💃",
+  "mysteryLevel": 65,
+  "tags": ["sejarah", "aneh", "medis"]
+},
+
+{
+  "id": 18,
+  "title": "Joplin Tornado",
+  "subtitle": "Tornado mematikan di AS",
+  "category": "insiden",
+  "categoryLabel": "INSIDEN",
+  "date": "2011",
+  "readTime": 7,
+  "status": "Fenomena Alam",
+  "heroBg": "asset/jop2.png",
+  "illustration": "https://unsplash.com",
+  "facts": [
+    "Dimulai dari satu wanita (Frau Troffea) yang menari tanpa henti",
+    "Dalam sebulan, 400 orang ikut menari tanpa musik",
+    "Banyak yang meninggal karena serangan jantung dan kelelahan"
+  ],
+  "content": " \
+    <h2 id='bagian1'>The butterfly people</h2> \
+    <img src='asset/jop1.png'> \
+    <p>Fenomena supranatural atau legenda urban yang muncul dari kesaksian para penyintas, terutama anak-anak, setelah tornado Joplin tahun 2011. Berikut adalah kaitan utama antara tornado Joplin dengan Butterfly People Kesaksian Perlindungan: Banyak anak-anak yang selamat dari tornado melaporkan melihat makhluk bercahaya dengan sayap besar berwarna-warni seperti kupu-kupu. Mereka mengklaim bahwa makhluk-makhluk ini melindungi atau membentengi mereka dari puing-puing yang beterbangan selama badai berlangsung. Identitas Spiritual Meskipun anak-anak menyebut mereka sebagai Orang Kupu-kupu, banyak orang dewasa dan tokoh agama menafsirkan penampakan tersebut sebagai malaikat yang turun untuk membantu. Ada juga kesaksian yang menyebut mereka terlihat membawa jiwa-jiwa korban yang meninggal menuju cahaya. Simbol Pemulihan: Cerita ini menjadi simbol harapan yang sangat kuat bagi masyarakat Joplin. Kota ini kemudian memasukkan unsur kupu-kupu ke dalam berbagai mural dan karya seni publik seperti mural he Butterfly Effect: Dreams Take Flight sebagai lambang ketangguhan dan kelahiran kembali kota tersebut. Penjelasan Medis/Psikologis Para ahli medis dan terapis yang menangani trauma anak-anak di Joplin mencatat bahwa cerita ini mungkin merupakan cara otak anak-anak untuk memproses trauma ekstrem dengan menciptakan gambaran yang menenangkan agar mereka bisa memahami bencana tersebut</p> \
+    <h2 id='bagian2'>Apa sih itu Joplin Tornado?</h2> \
+    <p>Joplin Tornado adalah bencana alam berupa tornado sangat kuat yang terjadi pada 22 Mei 2011 di kota Joplin, Amerika Serikat. Tornado ini diklasifikasikan sebagai EF5, yaitu tingkat tertinggi dalam skala Enhanced Fujita, dengan kecepatan angin diperkirakan melebihi 320 km/jam. Tornado tersebut memiliki lebar sekitar 1,5 kilometer dan berlangsung selama kurang lebih 38 menit, menyebabkan kerusakan yang sangat luas. Dampak dari kejadian ini sangat signifikan. Sekitar 7.000 bangunan hancur, termasuk rumah, sekolah, dan fasilitas kesehatan. Jumlah korban jiwa mencapai 158 orang, dengan lebih dari 1.000 orang mengalami luka-luka. Peristiwa ini menjadikannya sebagai salah satu tornado paling mematikan di Amerika Serikat pada abad ke-21. Selain dampak fisik, bencana ini juga memunculkan fenomena psikologis pada para penyintas, khususnya anak-anak, yang melaporkan melihat sosok yang disebut sebagai “Butterfly People.” Para ahli menafsirkan hal ini sebagai mekanisme psikologis dalam menghadapi trauma akibat bencana ekstrem. Secara keseluruhan, Joplin Tornado merupakan contoh nyata dari kekuatan destruktif fenomena alam serta pentingnya kesiapsiagaan dan respons cepat dalam menghadapi bencana</p>", 
+  "timeline": [
+    {"date": "Sore Hari 22 Mei 2011", "event": "Kondisi cuaca di wilayah Joplin mulai memburuk. Atmosfer lagi “matang” buat badai parah, kombinasi udara panas, lembap, dan angin kencang"},
+    {"date": "Sekitar pukul 17:30", "event": "Tornado mulai terbentuk di barat daya kota. Awalnya masih kecil, tapi cepat berkembang jadi supercell berbahaya."},
+    {"date": "±17:40 – 17:45", "event": "Tornado masuk ke wilayah kota dan langsung naik ke kategori EF5. Di fase ini, daya hancurnya udah brutal banget"},
+    {"date": "Saat melintasi kota (±38 menit)", "event": "Lebar tornado mencapai ±1,5 km Menyapu rumah, sekolah, dan rumah sakit Infrastruktur hancur total di jalur yang dilewati"},
+    {"date": "Peringatan dikeluarkan", "event": "Sirene darurat sebenarnya sudah dibunyikan. Tapi banyak warga telat evakuasi karena ngira itu alarm biasa atau false alarm."},
+    {"date": "Hari-hari berikutnya", "event": "Korban tewas dikonfirmasi: 158 orangLebih dari 1.000 luka-luka Kota mengalami kerusakan besar-besaran"},
+  ],
+  "verdict": "Joplin Tornado (2011) di Joplin bukan sekadar bencana alam, tapi momen ketika sebuah kota dihantam kekuatan yang dalam hitungan menit mampu menghapus kehidupan, menghancurkan bangunan, dan meninggalkan kehancuran total. Tornado ini datang cepat, tanpa ampun, dan memberi sedikit waktu bagi siapa pun untuk melarikan diri.",
+  "verdictIcon": "🌪️",
+  "mysteryLevel": 30,
+  "tags": ["insiden", "fenomena alam", "tornado"]
+},
+
+{
+  "id": 19,
+  "title": "MH370",
+  "subtitle": "Pesawat yang Hilang Tanpa Jejak",
+  "category": "misteri",
+  "categoryLabel": "MISTERI",
+  "date": "2014",
+  "readTime": 9,
+  "status": "Belum Terpecahkan",
+  "heroBg": "asset/mh370.png",
+  "illustration": "https://unsplash.com",
+  "facts": [
+    "239 orang hilang",
+    "Pesawat berbelok tanpa penjelasan",
+    "Bangkai utama belum ditemukan"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Hilang dari Dunia</h2> \
+    <p>Pada 8 Maret 2014, pesawat Malaysia Airlines MH370 menghilang dari radar saat perjalanan dari Kuala Lumpur ke Beijing. Kontak terakhir terdengar normal, tanpa tanda bahaya.</p> \
+    <h2 id='bagian2'>Perubahan Arah Misterius</h2> \
+    <p>Data radar menunjukkan pesawat berbelok tajam dari jalur seharusnya dan terus terbang selama berjam-jam ke arah Samudra Hindia.</p> \
+    <h2 id='bagian3'>Pencarian Terbesar dalam Sejarah</h2> \
+    <p>Pencarian besar dilakukan, namun hanya sedikit puing ditemukan. Hingga kini, penyebab pastinya masih belum diketahui.</p>",
+  "timeline": [
+    {"date": "8 Maret 2014", "event": "Pesawat hilang"},
+    {"date": "Hari berikutnya", "event": "Pencarian dimulai"},
+    {"date": "Tahun berikutnya", "event": "Puing ditemukan sebagian"}
+  ],
+  "verdict": "Kemungkinan jatuh di Samudra Hindia, penyebab tidak pasti",
+  "verdictIcon": "✈️",
+  "mysteryLevel": 95,
+  "tags": ["pesawat", "misteri"]
+},
+
+{
+  "id": 20,
+  "title": "Apollo 1",
+  "subtitle": "Tragedi Kebakaran yang Menghentikan Awal Program Apollo",
+  "category": "insiden",
+  "categoryLabel": "INSIDEN",
+  "date": "27 Januari 1967",
+  "readTime": 9,
+  "status": "Terpecahkan",
+  "heroBg": "asset/apol1.png",
+  "illustration": "https://unsplash.com",
+  "facts": [
+    "Tiga astronaut tewas dalam kabin",
+    "Kebakaran terjadi saat uji coba di darat",
+    "Atmosfer kabin berisi oksigen murni"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Misi yang Belum Sempat Terbang</h2> \
+    <p>Pada 27 Januari 1967, misi  sedang menjalani uji coba rutin di darat di . Tiga astronaut—, , dan —berada di dalam kapsul untuk simulasi peluncuran.</p> \
+    <p>Uji coba ini seharusnya aman karena roket tidak benar-benar akan diluncurkan. Namun, kondisi di dalam kabin justru menjadi sangat berbahaya tanpa disadari.</p> \
+    <h2 id='bagian2'>Kebakaran yang Mematikan</h2> \
+    <p>Secara tiba-tiba, percikan api muncul di dalam kapsul. Karena kabin diisi dengan oksigen murni bertekanan tinggi, api langsung menyebar dengan sangat cepat, mengubah kapsul menjadi ruang pembakaran dalam hitungan detik.</p> \
+    <p>Para astronaut mencoba keluar, namun pintu kapsul dirancang untuk membuka ke dalam dan tidak bisa dibuka dengan cepat akibat tekanan tinggi di dalam kabin. Dalam waktu kurang dari satu menit, ketiganya meninggal akibat asap beracun dan panas ekstrem.</p> \
+    <h2 id='bagian3'>Kesalahan Fatal</h2> \
+    <p>Investigasi menemukan beberapa faktor penyebab utama: penggunaan oksigen murni, banyaknya material mudah terbakar di dalam kabin, serta desain pintu yang tidak memungkinkan evakuasi cepat.</p> \
+    <p>Kombinasi faktor ini menciptakan kondisi yang sangat rentan terhadap kebakaran.</p> \
+    <h2 id='bagian4'>Dampak Besar bagi NASA</h2> \
+    <p>Tragedi ini membuat program Apollo dihentikan sementara.  melakukan evaluasi besar-besaran dan mendesain ulang kapsul untuk meningkatkan keselamatan.</p> \
+    <p>Perubahan ini termasuk sistem atmosfer yang lebih aman, material tahan api, dan pintu yang bisa dibuka dengan cepat dari dalam.</p> \
+    <h2 id='bagian5'>Warisan Tragedi</h2> \
+    <p>Meskipun berakhir tragis, kejadian ini menjadi titik balik penting dalam sejarah eksplorasi luar angkasa. Perbaikan yang dilakukan setelahnya memungkinkan misi Apollo berikutnya berjalan lebih aman, hingga akhirnya manusia berhasil mendarat di bulan pada tahun 1969.</p>",
+  "timeline": [
+    {"date": "27 Januari 1967", "event": "Uji coba kapsul dilakukan di darat"},
+    {"date": "Beberapa menit setelahnya", "event": "Kebakaran terjadi di dalam kabin"},
+    {"date": "Kurang dari 1 menit", "event": "Tiga astronaut meninggal"},
+    {"date": "Setelah kejadian", "event": "Investigasi besar-besaran dilakukan"},
+    {"date": "Beberapa tahun berikutnya", "event": "Desain kapsul diperbaiki total"}
+  ],
+  "verdict": "Kombinasi kesalahan desain, oksigen murni, dan material mudah terbakar",
+  "verdictIcon": "🚀",
+  "mysteryLevel": 5,
+  "tags": ["antariksa", "nasa", "tragedi"]
+},
+
+{
+  "id": 21,
+  "title": "The Frog Boys",
+  "subtitle": "Lima Anak yang Hilang dan Ditemukan Tewas Setelah 11 Tahun",
+  "category": "misteri",
+  "categoryLabel": "MISTERI",
+  "date": "1991",
+  "readTime": 10,
+  "status": "Tidak Terpecahkan",
+  "heroBg": "asset/frogboys1.png",
+  "illustration": "https://unsplash.com",
+  "facts": [
+    "Lima anak hilang saat mencari telur salamander",
+    "Pencarian melibatkan ratusan ribu personel",
+    "Kerangka ditemukan 11 tahun kemudian di lokasi yang sama"
+  ],
+  "content": " \
+    <h2 id='bagian1'>Hilang Tanpa Jejak</h2> \
+    <p>Pada 26 Maret 1991, lima anak laki-laki dari  pergi ke Gunung Waryong untuk mencari telur salamander, aktivitas yang umum dilakukan anak-anak saat musim semi. Mereka adalah Woo Cheol-won (13), Jo Ho-yeon (12), Kim Yeong-gyu (11), Park Chan-in (10), dan Kim Jong-sik (9).</p> \
+    <p>Mereka pamit kepada orang tua dan diperkirakan akan kembali dalam waktu singkat. Namun, mereka tidak pernah kembali.</p> \
+    <h2 id='bagian2'>Pencarian Besar-besaran</h2> \
+    <p>Hilangnya lima anak ini langsung menjadi perhatian nasional. Pemerintah Korea Selatan mengerahkan lebih dari 300.000 personel gabungan dari polisi, militer, dan relawan untuk mencari mereka. Operasi pencarian disiarkan secara luas di media.</p> \
+    <p>Gunung Waryong bahkan telah disisir ratusan kali, namun tidak ditemukan satu pun petunjuk berarti. Keluarga korban terus mencari selama bertahun-tahun, bahkan ada yang meninggalkan pekerjaan demi fokus pada pencarian anak mereka.</p> \
+    <h2 id='bagian3'>Penemuan Mengejutkan</h2> \
+    <p>Pada 26 September 2002, lebih dari 11 tahun setelah mereka menghilang, dua pria yang sedang mencari biji ek menemukan kerangka lima anak tersebut di Gunung Waryong. Lokasinya mengejutkan: berada di area yang sebelumnya sudah berkali-kali diperiksa.</p> \
+    <p>Awalnya, polisi menyatakan bahwa mereka meninggal karena hipotermia. Namun keluarga korban menolak keras kesimpulan tersebut karena ditemukan kejanggalan di lokasi.</p> \
+    <h2 id='bagian4'>Bukti Kekerasan</h2> \
+    <p>Investigasi lanjutan menemukan bahwa beberapa korban mengalami luka benturan keras pada tengkorak, yang menunjukkan kemungkinan pembunuhan. Selain itu, ditemukan peluru berkarat dan benda logam di sekitar lokasi.</p> \
+    <p>Posisi tubuh yang tidak wajar serta kondisi pakaian menimbulkan dugaan bahwa mereka tidak hanya meninggal secara alami, tetapi sengaja dibunuh dan dikubur.</p> \
+    <h2 id='bagian5'>Teori yang Muncul</h2> \
+    <ul> \
+      <li><b>Keterlibatan Militer:</b> Dugaan bahwa anak-anak tewas akibat latihan militer dan ditutup-tutupi.</li> \
+      <li><b>Pembunuhan oleh Warga Lokal:</b> Pelaku mungkin seseorang yang mengenal area tersebut dengan baik.</li> \
+      <li><b>Kejahatan Acak:</b> Anak-anak bisa saja bertemu pelaku yang melakukan kekerasan tanpa motif jelas.</li> \
+    </ul> \
+    <h2 id='bagian6'>Kasus yang Membeku</h2> \
+    <p>Pada tahun 2006, batas waktu hukum (statute of limitations) untuk kasus pembunuhan di Korea Selatan habis, membuat pelaku tidak bisa dituntut secara hukum saat itu. Namun pada 2015, hukum tersebut dihapus, membuka kemungkinan kasus ini bisa diadili jika pelaku ditemukan.</p> \
+    <h2 id='bagian7'>Dampak Sosial</h2> \
+    <p>Kasus ini mengguncang Korea Selatan dan memicu perubahan besar dalam sistem penanganan anak hilang serta prosedur investigasi. Sebuah monumen peringatan juga dibangun untuk mengenang para korban.</p>",
+  "timeline": [
+    {"date": "26 Maret 1991", "event": "Lima anak pergi ke Gunung Waryong dan menghilang"},
+    {"date": "1991", "event": "Pencarian besar-besaran dilakukan secara nasional"},
+    {"date": "1991–2002", "event": "Kasus tetap tanpa petunjuk"},
+    {"date": "26 September 2002", "event": "Kerangka ditemukan di Gunung Waryong"},
+    {"date": "2006", "event": "Batas waktu hukum kasus berakhir"},
+    {"date": "2015", "event": "Batas waktu pembunuhan dihapus di Korea Selatan"}
+  ],
+  "verdict": "Diduga kuat pembunuhan, namun pelaku tidak pernah ditemukan",
+  "verdictIcon": "🐸",
+  "mysteryLevel": 95,
+  "tags": ["misteri", "kriminal", "anak", "korea"]
+},
+
+];
+
+// GET ID
+function getCaseId() {
+  const params = new URLSearchParams(window.location.search);
+  let id = parseInt(params.get("id"));
+  if (isNaN(id)) id = 0;
+  return Math.max(0, Math.min(id, CASES.length - 1));
+}
+
+// RENDER
+function renderCase(data) {
+  document.title = `Shift Malam — ${data.title}`;
+  document.getElementById("articleHeroBg").style.backgroundImage = `url('${data.heroBg}')`;
+  document.getElementById("articleTitle").textContent = data.title;
+  document.getElementById("articleSub").textContent = data.subtitle;
+  document.getElementById("heroReadTime").textContent = `${data.readTime} menit baca`;
+  document.getElementById("heroDate").textContent = data.date;
+  document.getElementById("heroBadge").textContent = data.categoryLabel;
+  document.getElementById("factsList").innerHTML = data.facts.map(f => `<li>${f}</li>`).join('');
+  document.getElementById("articleContent").innerHTML = data.content;
+  document.getElementById("articleTags").innerHTML = data.tags.map(t => `<span class="tag">#${t}</span>`).join('');
+
+  // ── TIMELINE ──
+  if (data.timeline && data.timeline.length) {
+    document.getElementById("timelineSection").innerHTML = `
+      <div class="timeline-section">
+        <h3>📅 Timeline Kejadian</h3>
+        <ul class="timeline-list">
+          ${data.timeline.map(t => `
+            <li>
+              <span class="tl-date">${t.date}</span>
+              <span class="tl-event">${t.event}</span>
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+    `;
+  }
+
+  // ── VERDICT ──
+  if (data.verdict) {
+    document.getElementById("verdictSection").innerHTML = `
+      <div class="verdict-section">
+        <h3>⚖️ Kesimpulan</h3>
+        <div class="verdict-box">
+          <span class="verdict-icon">${data.verdictIcon || '🔍'}</span>
+          <div class="verdict-text">
+            <span class="verdict-label">Status: ${data.status || '-'}</span>
+            <span class="verdict-content">${data.verdict}</span>
+          </div>
+        </div>
+        <div class="mystery-section">
+          <div class="mystery-label">
+            <span>🌑 Tingkat Misteri</span>
+            <span>${data.mysteryLevel}%</span>
+          </div>
+          <div class="mystery-bar-bg">
+            <div class="mystery-bar-fill" style="width: ${data.mysteryLevel}%"></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  buildTOC();
+  setupNavigation(data.id);
+}
+
+// TOC
+function buildTOC() {
+  const headings = document.querySelectorAll('#articleContent h2, #articleContent h3');
+  const toc = document.getElementById('tocList');
+  toc.innerHTML = '';
+  headings.forEach(h => {
+    if (!h.id) h.id = h.textContent.toLowerCase().replace(/\s+/g, '-');
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = `#${h.id}`;
+    a.textContent = h.textContent;
+    a.onclick = e => {
+      e.preventDefault();
+      document.getElementById(h.id).scrollIntoView({ behavior: 'smooth' });
+    };
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+}
+
+// NAVIGATION
+function setupNavigation(id) {
+  const nextBtn = document.getElementById("nextBtn");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextTitle = document.getElementById("nextTitle");
+  const prevTitle = document.getElementById("prevTitle");
+
+  if (id < CASES.length - 1) {
+    nextBtn.href = `?id=${id + 1}`;
+    nextBtn.style.opacity = "1";
+    nextBtn.style.pointerEvents = "auto";
+    nextTitle.textContent = CASES[id + 1].title;
+  } else {
+    nextBtn.style.opacity = "0.3";
+    nextBtn.style.pointerEvents = "none";
+    nextTitle.textContent = "-";
+  }
+
+  if (id > 0) {
+    prevBtn.href = `?id=${id - 1}`;
+    prevBtn.style.opacity = "1";
+    prevBtn.style.pointerEvents = "auto";
+    prevTitle.textContent = CASES[id - 1].title;
+  } else {
+    prevBtn.style.opacity = "0.3";
+    prevBtn.style.pointerEvents = "none";
+    prevTitle.textContent = "-";
+  }
+}
+
+// PROGRESS BAR
+function updateProgress() {
+  const scroll = window.scrollY;
+  const height = document.body.scrollHeight - window.innerHeight;
+  const percent = (scroll / height) * 100;
+  document.getElementById("progressBar").style.width = percent + "%";
+}
+
+// TOAST
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// BOOKMARK
+function initBookmark() {
+  const btn = document.getElementById('bookmarkBtn');
+  const key = `bookmark-${getCaseId()}`;
+  if (localStorage.getItem(key)) btn.classList.add('active');
+  btn.onclick = () => {
+    const active = btn.classList.toggle('active');
+    if (active) localStorage.setItem(key, '1'), showToast('🔖 disimpan');
+    else localStorage.removeItem(key), showToast('🗑 dihapus');
+  };
+}
+
+// INIT
+window.addEventListener('scroll', updateProgress);
+document.addEventListener('DOMContentLoaded', () => {
+  const id = getCaseId();
+  renderCase(CASES[id]);
+  initBookmark();
+  updateProgress();
+});
+</script>
+
+</body>
+</html>

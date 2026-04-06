@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shift Malam — Kebenaran Tidak Selalu Terungkap di Siang Hari</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <span class="logo-icon">☾</span>
+        <span class="logo-text">Shift Malam</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#articles">Artikel</a></li>
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#contact">Kirim Usulan</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle">☰</button>
+    </div>
+    <ul class="nav-mobile" id="navMobile">
+      <li><a href="#articles">Artikel</a></li>
+      <li><a href="#about">Tentang</a></li>
+      <li><a href="#contact">Kontak=</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-noise"></div>
+    <div class="hero-content">
+      <p class="hero-label">— Selamat Datang di Shift Malam —</p>
+      <h1 class="hero-title">Jangan cari fakta<br /><em>dalam Terang.</em></h1>
+      <p class="hero-sub">Menyelami teori, kasus, dan misteri yang tersembunyi di balik lapisan realita yang kita kenal.</p>
+      <a href="#articles" class="hero-btn">Jelajahi Kasus</a>
+    </div>
+    <div class="hero-scroll-hint">↓</div>
+  </section>
+
+  <!-- ARTICLES SECTION -->
+  <section class="articles-section" id="articles">
+    <div class="section-header">
+      <h2 class="section-title">Arsip <span class="accent">Misteri</span></h2>
+      <p class="section-sub">Kumpulan kasus, teori, dan insiden yang menggugah rasa ingin tahu.</p>
+    </div>
+
+    <!-- SEARCH + FILTER -->
+    <div class="filter-bar">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Cari artikel..." class="search-input" />
+      </div>
+      <div class="category-btns">
+        <button class="cat-btn active" data-category="semua">Semua</button>
+        <button class="cat-btn" data-category="teori">Teori</button>
+        <button class="cat-btn" data-category="terpecahkan">Kasus Terpecahkan</button>
+        <button class="cat-btn" data-category="tak-terpecahkan">Kasus Tak Terpecahkan</button>
+        <button class="cat-btn" data-category="misteri-dunia">Misteri Dunia</button>
+        <button class="cat-btn" data-category="insiden">Insiden</button>
+      </div>
+    </div>
+
+    <!-- ARTICLE CARDS -->
+    <div class="cards-grid" id="cardsGrid">
+
+      <!-- ID 0 — Insiden Dyatlov Pass -->
+      <div class="card" data-category="insiden" data-title="Insiden Dyatlov Pass">
+        <div class="card-badge insiden">Insiden</div>
+        <img src="asset/dyatlov.png" alt="Ilustrasi Dyatlov Pass" class="card-img">
+        <h3 class="card-title">Insiden Dyatlov Pass</h3>
+        <p class="card-desc">1959, sembilan pendaki ditemukan tewas dalam kondisi misterius di Pegunungan Ural. Penyelidikan resmi menyebut "kekuatan tak dikenal".</p>
+        <div class="card-footer">
+          <span class="card-date">Februari 1959</span>
+          <a href="article.html?id=0" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 1 — Kasus Elisa Lam -->
+      <div class="card" data-category="tak-terpecahkan" data-title="Kasus Elisa Lam">
+        <div class="card-badge tak-terpecahkan">Tak Terpecahkan</div>
+        <img src="asset/elisa.png" alt="Ilustrasi Elisa Lam" class="card-img">
+        <h3 class="card-title">Kasus Elisa Lam</h3>
+        <p class="card-desc">Hotel Cecil jadi lokasi kematian misterius Elisa Lam. Video CCTV lift yang aneh dan tangki air tertutup rapat menyisakan tanda tanya besar.</p>
+        <div class="card-footer">
+          <span class="card-date">2013</span>
+          <a href="article.html?id=1" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 2 — Segitiga Bermuda -->
+      <div class="card" data-category="misteri-dunia" data-title="Segitiga Bermuda">
+        <div class="card-badge misteri-dunia">Misteri Dunia</div>
+        <img src="asset/segitiga.png" alt="Ilustrasi Segitiga Bermuda" class="card-img">
+        <h3 class="card-title">Segitiga Bermuda</h3>
+        <p class="card-desc">Zona hilang paling terkenal di dunia. Ratusan kapal dan pesawat, termasuk Flight 19, lenyap tanpa jejak di kawasan ini.</p>
+        <div class="card-footer">
+          <span class="card-date">1945 – Sekarang</span>
+          <a href="article.html?id=2" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 3 — Stonehenge -->
+      <div class="card" data-category="misteri-dunia" data-title="Stonehenge">
+        <div class="card-badge misteri-dunia">Misteri Dunia</div>
+        <img src="asset/stonehege1.png" alt="Ilustrasi Stonehenge" class="card-img">
+        <h3 class="card-title">Stonehenge</h3>
+        <p class="card-desc">Monumen megalitikum yang dibangun ribuan tahun sebelum masehi. Bagaimana manusia purba memindahkan batu 25 ton tanpa teknologi modern?</p>
+        <div class="card-footer">
+          <span class="card-date">3000 SM</span>
+          <a href="article.html?id=3" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 4 — Jack the Ripper -->
+      <div class="card" data-category="tak-terpecahkan" data-title="Pembunuhan Jack the Ripper">
+        <div class="card-badge tak-terpecahkan">Tak Terpecahkan</div>
+        <img src="asset/jek1.png" alt="Ilustrasi Jack the Ripper" class="card-img">
+        <h3 class="card-title">Pembunuhan Jack the Ripper</h3>
+        <p class="card-desc">London 1888. Pembunuh misterius memutilasi korban dengan presisi bedah, mengirim surat ejekan ke polisi, dan tidak pernah tertangkap hingga hari ini.</p>
+        <div class="card-footer">
+          <span class="card-date">1888</span>
+          <a href="article.html?id=4" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 5 — Amelia Earhart -->
+      <div class="card" data-category="tak-terpecahkan" data-title="Hilangnya Amelia Earhart">
+        <div class="card-badge tak-terpecahkan">Tak Terpecahkan</div>
+        <img src="asset/amelia.png" alt="Amelia Earhart" class="card-img">
+        <h3 class="card-title">Hilangnya Amelia Earhart</h3>
+        <p class="card-desc">Penerbang wanita paling terkenal di dunia lenyap di atas Samudra Pasifik saat mencoba mengelilingi bumi. Pesawatnya tidak pernah ditemukan.</p>
+        <div class="card-footer">
+          <span class="card-date">1937</span>
+          <a href="article.html?id=5" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 6 — Marilyn Monroe -->
+      <div class="card" data-category="tak-terpecahkan" data-title="Kematian Marilyn Monroe">
+        <div class="card-badge tak-terpecahkan">Tak Terpecahkan</div>
+        <img src="asset/marilyn1.png" alt="Marilyn Monroe" class="card-img">
+        <h3 class="card-title">Kematian Marilyn Monroe</h3>
+        <p class="card-desc">Overdosis, bunuh diri, atau pembunuhan terencana? Keterlibatan Kennedy bersaudara dan laporan otopsi yang hilang membuat kasus ini tak pernah benar-benar tutup.</p>
+        <div class="card-footer">
+          <span class="card-date">1962</span>
+          <a href="article.html?id=6" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 7 — Zodiac Killer -->
+      <div class="card" data-category="tak-terpecahkan" data-title="The Zodiac Killer">
+        <div class="card-badge tak-terpecahkan">Tak Terpecahkan</div>
+        <img src="asset/zod1.png" alt="Zodiac Killer" class="card-img">
+        <h3 class="card-title">The Zodiac Killer</h3>
+        <p class="card-desc">Pembunuh California yang mengirim kriptogram ke koran untuk menantang polisi. Kode keempatnya baru terpecahkan setelah 51 tahun — dan masih tidak mengungkap siapa dia.</p>
+        <div class="card-footer">
+          <span class="card-date">1968 – 1969</span>
+          <a href="article.html?id=7" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 8 — Edgar Allan Poe -->
+      <div class="card" data-category="misteri-dunia" data-title="Kematian Edgar Allan Poe">
+        <div class="card-badge misteri-dunia">Misteri Dunia</div>
+        <img src="asset/ed1.png">
+        <h3 class="card-title">Kematian Edgar Allan Poe</h3>
+        <p class="card-desc">Penulis horor terbesar meninggal dengan cara sepaling misterius dari semua ceritanya sendiri — ditemukan memakai baju orang lain, memanggil nama yang tidak dikenal siapapun.</p>
+        <div class="card-footer">
+          <span class="card-date">1849</span>
+          <a href="article.html?id=8" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 9 — Tunguska -->
+      <div class="card" data-category="insiden" data-title="Peristiwa Tunguska">
+        <div class="card-badge insiden">Insiden</div>
+        <img src="asset/tung3.png" alt="Tunguska" class="card-img">
+        <h3 class="card-title">Peristiwa Tunguska</h3>
+        <p class="card-desc">Ledakan 1000 kali lebih kuat dari bom Hiroshima meratakan 2.150 km² hutan Siberia — namun tidak meninggalkan satu pun kawah di tanah.</p>
+        <div class="card-footer">
+          <span class="card-date">30 Juni 1908</span>
+          <a href="article.html?id=9" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 10 — Kode Beale -->
+      <div class="card" data-category="misteri-dunia" data-title="Kode Beale">
+        <div class="card-badge misteri-dunia">Misteri Dunia</div>
+        <img src="asset/bea1.png" alt="Kode Beale" class="card-img">
+        <h3 class="card-title">Kode Beale</h3>
+        <p class="card-desc">Tiga lembar angka misterius yang diklaim menyimpan lokasi harta karun senilai triliunan rupiah. Dua dari tiga kodenya belum pernah terpecahkan selama 200 tahun.</p>
+        <div class="card-footer">
+          <span class="card-date">1820 – Sekarang</span>
+          <a href="article.html?id=10" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 11 — Flat Earth -->
+      <div class="card" data-category="teori" data-title="Teori Flat Earth">
+        <div class="card-badge teori">Teori</div>
+        <img src="asset/flat1.png" alt="Ilustrasi Flat Earth" class="card-img">
+        <h3 class="card-title">Teori Flat Earth</h3>
+        <p class="card-desc">Skeptisisme radikal terhadap sains modern. Komunitas Bumi Datar percaya Antartika hanyalah dinding es raksasa yang menyembunyikan ujung dunia.</p>
+        <div class="card-footer">
+          <span class="card-date">Abad 19 – Sekarang</span>
+          <a href="article.html?id=11" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 12 — Roswell -->
+      <div class="card" data-category="misteri-dunia" data-title="Roswell Incident">
+        <div class="card-badge misteri-dunia">Misteri Dunia</div>
+        <img src="asset/rosw1.png" alt="Ilustrasi Roswell" class="card-img">
+        <h3 class="card-title">Roswell Incident</h3>
+        <p class="card-desc">Militer Amerika sempat mengumumkan penemuan piring terbang di New Mexico sebelum pernyataan itu ditarik dalam hitungan jam. Apa yang sebenarnya jatuh?</p>
+        <div class="card-footer">
+          <span class="card-date">1947</span>
+          <a href="article.html?id=12" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 13 — Cicada 3301 -->
+      <div class="card" data-category="teori" data-title="The Cicada 3301">
+        <div class="card-badge teori">Teori</div>
+        <img src="asset/cica1.png" alt="Cicada 3301" class="card-img">
+        <h3 class="card-title">The Cicada 3301</h3>
+        <p class="card-desc">Teka-teki internet paling kompleks yang pernah ada. Melibatkan steganografi, koordinat GPS dunia nyata, dan para peserta yang menang tidak pernah terdengar lagi.</p>
+        <div class="card-footer">
+          <span class="card-date">2012 – 2014</span>
+          <a href="article.html?id=13" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 14 — Hinterkaifeck -->
+      <div class="card" data-category="insiden" data-title="The Hinterkaifeck Murders">
+        <div class="card-badge insiden">Insiden</div>
+        <img src="asset/hint1.png" alt="Hinterkaifeck" class="card-img">
+        <h3 class="card-title">The Hinterkaifeck Murders</h3>
+        <p class="card-desc">Seluruh keluarga dibantai di peternakan terpencil Jerman. Yang lebih mengerikan: pelaku tinggal di loteng rumah mereka selama berhari-hari sebelum beraksi.</p>
+        <div class="card-footer">
+          <span class="card-date">1922</span>
+          <a href="article.html?id=14" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 15 — Voynich Manuscript -->
+      <div class="card" data-category="misteri-dunia" data-title="The Voynich Manuscript">
+        <div class="card-badge misteri-dunia">Misteri Dunia</div>
+        <img src="asset//voy2.png" alt="Voynich Manuscript" class="card-img">
+        <h3 class="card-title">The Voynich Manuscript</h3>
+        <p class="card-desc">Buku abad ke-15 yang ditulis dalam bahasa yang tidak dikenal siapapun di bumi. Pemecah kode terbaik dunia, termasuk dari NSA, semua gagal membacanya.</p>
+        <div class="card-footer">
+          <span class="card-date">Abad ke-15</span>
+          <a href="article.html?id=15" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 16 — Mandela Effect -->
+      <div class="card" data-category="teori" data-title="The Mandela Effect">
+        <div class="card-badge teori">Teori</div>
+        <img src="asset/mn1.png" alt="Mandela Effect" class="card-img">
+        <h3 class="card-title">The Mandela Effect</h3>
+        <p class="card-desc">Jutaan orang di seluruh dunia memiliki ingatan kolektif yang sama tentang sesuatu yang tidak pernah terjadi. Kesalahan memori massal, atau kita pernah berpindah timeline?</p>
+        <div class="card-footer">
+          <span class="card-date">2010 – Sekarang</span>
+          <a href="article.html?id=16" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 17 — Dancing Plague -->
+      <div class="card" data-category="insiden" data-title="The Dancing Plague">
+        <div class="card-badge insiden">Insiden</div>
+        <img src="asset/dnc1.png" alt="Dancing Plague" class="card-img">
+        <h3 class="card-title">The Dancing Plague</h3>
+        <p class="card-desc">Strasbourg 1518: ratusan orang menari tanpa henti selama berminggu-minggu hingga banyak yang meninggal kelelahan. Tidak ada yang tahu mengapa mereka tidak bisa berhenti.</p>
+        <div class="card-footer">
+          <span class="card-date">1518</span>
+          <a href="article.html?id=17" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 18 — Joplin Tornado -->
+      <div class="card" data-category="insiden" data-title="Joplin tornado">
+        <div class="card-badge insiden">Insiden</div>
+        <img src="asset/jop2.png" alt="jop2" class="card-img">
+        <h3 class="card-title">Joplin Tornado</h3>
+        <p class="card-desc">bencana angin puting beliung dahsyat berkekuatan EF-5 yang menghantam kota Joplin, Missouri, AS, pada 22 Mei 2011.</p>
+        <div class="card-footer">
+          <span class="card-date">2011</span>
+          <a href="article.html?id=18" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 19 — Mh 370 -->
+      <div class="card" data-category="misteri-dunia" data-title="mh370">
+        <div class="card-badge misteri-dunia">Misteri Dunia</div>
+        <img src="asset//mh370.png" alt="Voynich Manuscript" class="card-img">
+        <h3 class="card-title">MH370</h3>
+        <p class="card-desc">pesawat Malaysia Airlines MH370 menghilang dari radar saat perjalanan dari Kuala Lumpur ke Beijing. Kontak terakhir terdengar normal, tanpa tanda bahaya.</p>
+        <div class="card-footer">
+          <span class="card-date">2014</span>
+          <a href="article.html?id=19" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 20 — Apollo 1 -->
+      <div class="card" data-category="insiden" data-title="Apollo 1">
+        <div class="card-badge insiden">insiden</div>
+        <img src="asset//apol1.png" alt="Apollo" class="card-img">
+        <h3 class="card-title">Apollo 1</h3>
+        <p class="card-desc">peluncuran berawak manusia dalam Program Apollo. Namun, misi ini gagal terbang setelah ketiga kru utama dalam misi ini tewas pada saat kebakaran modul</p>
+        <div class="card-footer">
+          <span class="card-date">1967</span>
+          <a href="article.html?id=20" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- ID 21 — frogboys -->
+      <div class="card" data-category="tak-terpecahkan" data-title="frogboys">
+        <div class="card-badge tak-terpecahkan ">Tak Terpecahkan</div>
+        <img src="asset//frogboys1.png" alt="frogboys" class="card-img">
+        <h3 class="card-title">Frog boys</h3>
+        <p class="card-desc">Kasus "Frog boys" merujuk pada hilangnya dan pembunuhan lima anak laki-laki di Daegu, Korea Selatan pada tahun 1991, yang hilang saat mencari telur salamander (awalnya dikira telur katak) di Gunung Waryong. Jasad mereka ditemukan 11 tahun kemudian pada tahun 2002 dengan bukti kekerasan, menjadikannya salah satu kasus pembunuhan yang belum terpecahkan paling terkenal di Korea Selatan.</p>
+        <div class="card-footer">
+          <span class="card-date">2002</span>
+          <a href="article.html?id=21" class="card-link">Baca →</a>
+        </div>
+      </div>
+
+      <!-- NO RESULTS MESSAGE -->
+      <div class="no-results" id="noResults" style="display:none;">
+        <p>😶 Tidak ada artikel yang cocok dengan pencarianmu.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <div class="about-text">
+        <h2 class="section-title">Tentang <span class="accent">Shift Malam</span></h2>
+        <p>Shift Malam adalah ruang untuk mereka yang tidak puas dengan jawaban permukaan. Kami mengumpulkan, merangkum, dan membahas kasus-kasus yang tersembunyi, teori yang dianggap gila, dan misteri yang belum terpecahkan.</p>
+        <p>Kami bukan menyebarkan hoaks — kami mengajak kamu untuk <strong>berpikir lebih dalam</strong> dan mempertanyakan apa yang ada di balik narasi utama.</p>
+        <div class="about-stats">
+          <div class="stat"><span class="stat-num">21</span><span class="stat-label">Artikel</span></div>
+          <div class="stat"><span class="stat-num">5</span><span class="stat-label">Kategori</span></div>
+          <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Pertanyaan</span></div>
+        </div>
+      </div>
+      <div class="about-quote">
+        <blockquote>
+          "Rahasia terbesar bukan yang tersembunyi — tapi yang ada di depan mata namun tidak ada yang mau lihat."
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section" id="contact">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <h2 class="section-title">Kirim <span class="accent">Pesan</span></h2>
+        <p>Punya kasus yang ingin dibahas? Temukan sesuatu yang mencurigakan? Atau sekadar ingin berdiskusi? Tulis pesanmu di sini.</p>
+        <div class="contact-hints">
+          <p>📁 Kirim laporan kasus</p>
+          <p>💡 Usul topik baru</p>
+          <p>🤝 Kolaborasi konten</p>
+        </div>
+      </div>
+   <form class="contact-form" 
+      action="https://formspree.io/f/xkgkjaao" 
+      method="POST"
+      id="contactForm">
+
+  <div class="form-group">
+    <label>Nama</label>
+    <input type="text" name="name" placeholder="Nama kamu..." required />
+  </div>
+
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" name="email" placeholder="email@kamu.com" required />
+  </div>
+
+  <div class="form-group">
+    <label>Pesan</label>
+    <textarea name="message" rows="5" placeholder="Tulis pesan..." required></textarea>
+  </div>
+
+  <button type="submit" class="submit-btn">Kirim Pesan</button>
+
+  <p class="form-success" id="formSuccess" style="display:none;">
+    ✅ Pesan terkirim! Cek email nanti.
+  </p>
+</form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">☾</span>
+        <span class="logo-text">Shift Malam</span>
+        <p>Kebenaran tidak selalu terungkap di siang hari.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Kategori</h4>
+        <ul>
+          <li><a href="#">Teori Konspirasi</a></li>
+          <li><a href="#">Kasus Terpecahkan</a></li>
+          <li><a href="#">Kasus Tak Terpecahkan</a></li>
+          <li><a href="#">Misteri Dunia</a></li>
+          <li><a href="#">Insiden</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#articles">Artikel</a></li>
+          <li><a href="#about">Tentang</a></li>
+          <li><a href="#contact">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Shift Malam. Dibuat untuk mereka yang berani bertanya.</p>
+    </div>
+  </footer>
+
+  <script src="/js/index.js"></script>
+  <script>
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const data = new FormData(form);
+
+  const response = await fetch(form.action, {
+    method: "POST",
+    body: data,
+    headers: {
+      'Accept': 'application/json'
+    }
+  });
+
+  if (response.ok) {
+    document.getElementById("formSuccess").style.display = "block";
+    form.reset();
+  } else {
+    alert("Gagal kirim, coba lagi.");
+  }
+});
+</script>
+</body>
+</html> 
